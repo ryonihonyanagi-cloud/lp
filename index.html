@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consulting | RYO NIHONYANAGI</title>
+    <meta name="description" content="AI時代の水先案内人 二本柳亮。最新AIトレンドの把握からツール導入、社内ツール開発まで。週次ミーティングでビジネスのAI化を伴走支援。">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* ===== リセット & 基本設定 ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f0f12;
+            --bg-surface: #16161d;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-border-hover: rgba(255, 255, 255, 0.25);
+            --text: #f0f0f5;
+            --text-muted: #9b9bb0;
+            --text-dim: #6b6b80;
+            --accent: #f59e42;
+            --accent-glow: rgba(245, 158, 66, 0.25);
+            --accent2: #e8734a;
+            --gradient-warm: linear-gradient(135deg, #f59e42, #e8734a);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --font: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== スクロールプログレスバー ===== */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--gradient-warm);
+            z-index: 300;
+            width: 0%;
+            transition: width 0.08s linear;
+        }
+
+        /* ===== ナビゲーション ===== */
+        #mainNav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 40px;
+            transition: var(--transition);
+        }
+
+        #mainNav.scrolled {
+            background: rgba(15, 15, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 24px var(--accent-glow);
+        }
+
+        .nav-cta .material-icons {
+            font-size: 16px;
+        }
+
+        /* モバイルナビ */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            #mainNav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 15, 18, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--glass-border);
+            }
+        }
+
+        /* ===== セクション共通 ===== */
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 64px 0;
+            }
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title .accent {
+            color: var(--accent);
+        }
+
+        .section-lead {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .section-header {
+            margin-bottom: 56px;
+        }
+
+        .section-header.center {
+            text-align: center;
+        }
+
+        .section-header.center .section-lead {
+            margin: 0 auto;
+        }
+
+        /* ===== フェードイン ===== */
+        .fi {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fi.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fi.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fi.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fi.delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fi.delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* ===== グラスカード共通 ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: var(--glass-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(245, 158, 66, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(232, 115, 74, 0.06) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .hero-blob-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(245, 158, 66, 0.12);
+            top: 10%;
+            right: 10%;
+        }
+
+        .hero-blob-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(232, 115, 74, 0.08);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: -3s;
+        }
+
+        .hero-blob-3 {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            top: 50%;
+            left: 40%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-eyebrow .material-icons {
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .accent {
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 40px;
+            max-width: 560px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* CTAボタン */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: var(--gradient-warm);
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 24px var(--accent-glow);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(245, 158, 66, 0.4);
+        }
+
+        .btn-primary .material-icons {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover .material-icons {
+            transform: translateX(4px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 28px;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+            border-color: var(--glass-border-hover);
+            background: var(--glass-bg);
+        }
+
+        /* ===== Problem ===== */
+        #problem {
+            background: var(--bg-surface);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .problem-card {
+            padding: 36px 28px;
+        }
+
+        .problem-card .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(245, 158, 66, 0.1);
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        .problem-card .card-icon .material-icons {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ===== Service Plans ===== */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .plan-card {
+            padding: 44px 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .plan-card.featured {
+            border-color: rgba(245, 158, 66, 0.3);
+        }
+
+        .plan-card.featured::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius-lg);
+            padding: 1px;
+            background: var(--gradient-warm);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .plan-badge.consulting {
+            background: rgba(245, 158, 66, 0.12);
+            color: var(--accent);
+        }
+
+        .plan-badge.development {
+            background: rgba(100, 180, 255, 0.12);
+            color: #64b4ff;
+        }
+
+        .plan-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .plan-card .plan-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.03em;
+        }
+
+        .plan-price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .plan-note {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            margin-bottom: 28px;
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 36px;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .plan-features li .material-icons {
+            font-size: 18px;
+            color: var(--accent);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ===== About ===== */
+        #about {
+            background: var(--bg-surface);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+        }
+
+        .about-photo {
+            position: relative;
+        }
+
+        .about-photo-frame {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: var(--radius-lg);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-photo-frame::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: rgba(245, 158, 66, 0.15);
+            border-radius: 50%;
+            filter: blur(40px);
+            top: 20%;
+            right: -10%;
+        }
+
+        .about-photo-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(245, 158, 66, 0.2), rgba(232, 115, 74, 0.15));
+            border: 2px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo-placeholder .material-icons {
+            font-size: 64px;
+            color: var(--text-dim);
+        }
+
+        .about-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .about-role {
+            font-size: 0.88rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 32px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about-stats {
+                justify-items: center;
+            }
+        }
+
+        .about-stat {
+            text-align: center;
+            padding: 20px 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+        }
+
+        .about-stat-num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+        }
+
+        .about-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 4px;
+        }
+
+        /* ===== Speaking (登壇実績) ===== */
+        .speaking-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .speaking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            .speaking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .speaking-card {
+            cursor: default;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .speaking-card-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            transition: transform 0.5s ease;
+        }
+
+        .speaking-card:hover .speaking-card-img {
+            transform: scale(1.03);
+        }
+
+        .speaking-card-body {
+            padding: 18px 22px;
+        }
+
+        .speaking-card-date {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .speaking-card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+        }
+
+        /* ===== CTA セクション ===== */
+        #cta {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .cta-bg-blob-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(245, 158, 66, 0.1);
+            top: -200px;
+            right: -100px;
+        }
+
+        .cta-bg-blob-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(232, 115, 74, 0.06);
+            bottom: -150px;
+            left: -100px;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cta-inner h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .cta-inner p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-micro {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .cta-micro .material-icons {
+            font-size: 14px;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        /* ===== フッター ===== */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* ===== コンタクトフォーム ===== */
+        .contact-form {
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .form-label .required {
+            color: var(--accent);
+            margin-left: 4px;
+            font-size: 0.7rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-dim);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239b9bb0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        .form-select option {
+            background: #1e1e28;
+            color: var(--text);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 540px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* サンクスメッセージ */
+        .thanks-msg {
+            display: none;
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .thanks-msg.show {
+            display: block;
+        }
+
+        .thanks-msg .material-icons {
+            font-size: 56px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .thanks-msg h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .thanks-msg p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ===== セクション区切り ===== */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- スクロールプログレスバー -->
+    <div class="scroll-indicator" id="scrollBar"></div>
+
+    <!-- ナビゲーション -->
+    <nav id="mainNav">
+        <a href="#" class="nav-logo">pilot<span>AI</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#problem">課題</a></li>
+            <li><a href="#plans">サービス</a></li>
+            <li><a href="#about">プロフィール</a></li>
+            <li><a href="#speaking">登壇実績</a></li>
+        </ul>
+        <a href="#cta" class="nav-cta">
+            <span class="material-icons">mail_outline</span>
+            無料相談
+        </a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
+        <div class="section-inner">
+            <div class="hero-content">
+                <div class="hero-eyebrow fi">
+                    <span class="material-icons">auto_awesome</span>
+                    AI導入支援 & 社内ツール開発
+                </div>
+                <h1 class="fi delay-1">
+                    AIの波を、<br>あなたの<span class="accent">ビジネス</span>に。
+                </h1>
+                <p class="hero-sub fi delay-2">
+                    最新AIトレンドの把握から、ペインの発見、ツール導入、社内システム開発まで。<br>
+                    週次ミーティングで伴走し、あなたのビジネスのAI化を確実に進めます。
+                </p>
+                <div class="hero-actions fi delay-3">
+                    <a href="#cta" class="btn-primary">
+                        無料相談を予約する
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                    <a href="#plans" class="btn-ghost">
+                        <span class="material-icons">visibility</span>
+                        サービスを見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Problem ===== -->
+    <section id="problem">
+        <div class="section-inner">
+            <div class="section-header center fi">
+                <p class="section-eyebrow">Problem</p>
+                <h2 class="section-title">こんな<span class="accent">課題</span>、ありませんか?</h2>
+                <p class="section-lead">AI時代の到来は感じているけれど、何から手をつけるべきか分からない。そんな声を多く聞きます。</p>
+            </div>
+            <div class="problem-grid">
+                <div class="glass-card problem-card fi delay-1">
+                    <div class="card-icon">
+                        <span class="material-icons">trending_up</span>
+                    </div>
+                    <h3>トレンドの変化が速すぎる</h3>
+                    <p>毎週のように新しいAIツールやサービスが登場し、どれが自社に最適なのか判断できない。情報収集だけで貴重な時間が消えていく。</p>
+                </div>
+                <div class="glass-card problem-card fi delay-2">
+                    <div class="card-icon">
+                        <span class="material-icons">psychology</span>
+                    </div>
+                    <h3>導入しても定着しない</h3>
+                    <p>ツールを試しに入れてみたものの、現場に浸透しない。本当のペインに刺さっていないため、結局元のやり方に戻ってしまう。</p>
+                </div>
+                <div class="glass-card problem-card fi delay-3">
+                    <div class="card-icon">
+                        <span class="material-icons">code</span>
+                    </div>
+                    <h3>社内ツールが作れない</h3>
+                    <p>市販ツールでは足りない業務特化の仕組みが必要。しかし開発リソースがなく、外注先の選定も難しい。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== Service Plans ===== -->
+    <section id="plans">
+        <div class="section-inner">
+            <div class="section-header center fi">
+                <p class="section-eyebrow">Service Plans</p>
+                <h2 class="section-title">2つの<span class="accent">支援プラン</span></h2>
+                <p class="section-lead">課題のフェーズに合わせて、最適なプランをお選びいただけます。</p>
+            </div>
+            <div class="plans-grid">
+
+                <!-- コンサルティングプラン -->
+                <div class="glass-card plan-card fi delay-1">
+                    <span class="plan-badge consulting">Consulting</span>
+                    <h3>AIコンサルティング</h3>
+                    <p class="plan-desc">週次ミーティングで最新AIトレンドを共有し、クライアントの本質的なペインを見極めた上で、最適なAIツールの選定・導入を伴走支援します。</p>
+                    <div class="plan-price">
+                        10万円<span>/ 月~</span>
+                    </div>
+                    <p class="plan-note">契約は月単位。まずはお気軽にご相談ください。</p>
+                    <ul class="plan-features">
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            週1回 60分のオンラインミーティング
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            最新AIトレンドレポートの共有
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            業務ペインの分析・可視化
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            AIツール選定・導入ロードマップ策定
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            チャットでの随時質問対応
+                        </li>
+                    </ul>
+                    <a href="#cta" class="btn-primary" style="width:100%; justify-content:center;">
+                        まずは無料相談
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+
+                <!-- 開発プラン -->
+                <div class="glass-card plan-card featured fi delay-2">
+                    <span class="plan-badge development">Development</span>
+                    <h3>社内ツール開発</h3>
+                    <p class="plan-desc">専属の開発者をアサインし、業務に特化した社内AIツール・自動化システムを設計・開発・運用まで一気通貫でサポートします。</p>
+                    <div class="plan-price">
+                        30万円<span>/ 月~</span>
+                    </div>
+                    <p class="plan-note">契約は月単位。まずはお気軽にご相談ください。</p>
+                    <ul class="plan-features">
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            コンサルティングプランの全内容を含む
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            専属の開発エンジニアのアサイン
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            業務特化AIツールの設計・開発
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            既存システムとのAPI連携
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            運用・保守サポート
+                        </li>
+                        <li>
+                            <span class="material-icons">check_circle</span>
+                            社内向けAI活用研修の実施
+                        </li>
+                    </ul>
+                    <a href="#cta" class="btn-primary" style="width:100%; justify-content:center;">
+                        まずは無料相談
+                        <span class="material-icons">arrow_forward</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+        <div class="section-inner">
+            <div class="section-header fi">
+                <p class="section-eyebrow">About</p>
+                <h2 class="section-title">コンサルタント<span class="accent">紹介</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-photo fi delay-1">
+                    <div class="about-photo-frame">
+                        <img src="profile.jpg" alt="二本柳 亮" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                </div>
+                <div class="about-content fi delay-2">
+                    <h3>二本柳 亮</h3>
+                    <p class="about-role">AI時代の水先案内人 / SHIFT AI認定講師</p>
+                    <p class="about-text">
+                        AI技術の進化が加速する現代において、ビジネスパーソンがその潮流を捉え、実践的なスキルを身につけるための「水先案内人」。SHIFT
+                        AI認定講師として常に最新情報に触れ、数々の大型アップデート速報ウェビナーを担当。単なる情報提供に留まらず、AIコンサルタントとして企業の課題に深く寄り添い、n8n・Difyを用いた自動化フローの構築や、Manus・GenSparkといった最先端AIエージェントの活用支援を得意とする。Gemini
+                        Enterpriseなど法人向けAIエージェントの実践知見にも精通し、最新トレンドから現場導入まで一貫してリードする、新時代のナビゲーター。
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <div class="about-stat-num">13+</div>
+                            <div class="about-stat-label">登壇回数</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">30+</div>
+                            <div class="about-stat-label">対応 AIツール数</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">SHIFT AI</div>
+                            <div class="about-stat-label">認定講師</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== Speaking (登壇実績) ===== -->
+    <section id="speaking">
+        <div class="section-inner">
+            <div class="section-header center fi">
+                <p class="section-eyebrow">Speaking</p>
+                <h2 class="section-title">登壇<span class="accent">実績</span></h2>
+                <p class="section-lead">ウェビナー・勉強会・イベントでの登壇を通じて、最新AIの知見を発信しています。</p>
+            </div>
+            <div class="speaking-grid">
+
+                <div class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20260223_AI時代_人間は考える側でいられるか.jpeg" alt="AI時代、人間は考える側でいられるか" class="speaking-card-img"
+                        loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.02.23</div>
+                        <div class="speaking-card-title">AI時代、人間は考える側でいられるか</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-2">
+                    <img src="登壇実績/20260222_ゆるっと作業会東京.jpeg" alt="ゆるっと作業会 東京" class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.02.22</div>
+                        <div class="speaking-card-title">ゆるっと作業会 東京</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-3">
+                    <img src="登壇実績/20260220_Gemini_Claude_Grok_最新AI三大アップデート.jpeg" alt="Gemini・Claude・Grok 最新AI三大アップデート"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.02.20</div>
+                        <div class="speaking-card-title">Gemini / Claude / Grok 最新AI三大アップデート</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi">
+                    <img src="登壇実績/20260206_ClaudeOpus4.6とCodex_速報ウェビナー.jpeg" alt="Claude Opus 4.6 & Codex 速報ウェビナー"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.02.06</div>
+                        <div class="speaking-card-title">Claude Opus 4.6 & Codex 速報ウェビナー</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20260206_UI-TARS_LLMは目を持ったか.jpeg" alt="UI-TARS: LLMは目を持ったか" class="speaking-card-img"
+                        loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.02.06</div>
+                        <div class="speaking-card-title">UI-TARS: LLMは目を持ったか</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-2">
+                    <img src="登壇実績/20260121_ClaudeCowork_新しい可能性.jpeg" alt="Claude Cowork 新しい可能性"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2026.01.21</div>
+                        <div class="speaking-card-title">Claude Cowork 新しい可能性</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-3">
+                    <img src="登壇実績/20251213_GoogleWorkspaceStudio_正式リリース.jpeg" alt="Google Workspace Studio 正式リリース"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.12.13</div>
+                        <div class="speaking-card-title">Google Workspace Studio 正式リリース</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi">
+                    <img src="登壇実績/20251113_AIエージェント活用講座.jpeg" alt="AIエージェント活用講座" class="speaking-card-img"
+                        loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.11.13</div>
+                        <div class="speaking-card-title">AIエージェント活用講座</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20251023_Manus1.5_徹底解説ウェビナー.jpeg" alt="Manus 1.5 徹底解説ウェビナー" class="speaking-card-img"
+                        loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.10.23</div>
+                        <div class="speaking-card-title">Manus 1.5 徹底解説ウェビナー</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-2">
+                    <img src="登壇実績/20251022_Atlas解禁_OpenAIブラウザ速報.jpeg" alt="Atlas解禁・OpenAIブラウザ速報"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.10.22</div>
+                        <div class="speaking-card-title">Atlas解禁 / OpenAIブラウザ速報</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-3">
+                    <img src="登壇実績/20251016_GoogleVeo3.1_アップデート完全解説.jpeg" alt="Google Veo 3.1 アップデート完全解説"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.10.16</div>
+                        <div class="speaking-card-title">Google Veo 3.1 アップデート完全解説</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi">
+                    <img src="登壇実績/20251009_GoogleOpal_AIエージェント研究回.jpeg" alt="Google Opal AIエージェント研究回"
+                        class="speaking-card-img" loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.10.09</div>
+                        <div class="speaking-card-title">Google Opal AIエージェント研究回</div>
+                    </div>
+                </div>
+
+                <div class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20250912_脱手入力_ハンズフリーAI仕事術.jpeg" alt="脱手入力 ハンズフリーAI仕事術" class="speaking-card-img"
+                        loading="lazy">
+                    <div class="speaking-card-body">
+                        <div class="speaking-card-date">2025.09.12</div>
+                        <div class="speaking-card-title">脱手入力 ハンズフリーAI仕事術</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA / コンタクトフォーム ===== -->
+    <section id="cta">
+        <div class="cta-bg-blob cta-bg-blob-1"></div>
+        <div class="cta-bg-blob cta-bg-blob-2"></div>
+        <div class="section-inner">
+            <div class="cta-inner fi">
+                <p class="section-eyebrow">Contact</p>
+                <h2>AIで、ビジネスの<span class="accent">次の一手</span>を。</h2>
+                <p>まずは無料相談で、あなたのビジネスの課題と可能性について<br>お話しさせてください。押し売りは一切しません。</p>
+            </div>
+
+            <!-- フォーム -->
+            <form class="contact-form fi delay-1" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="name">お名前<span class="required">*</span></label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="山田 太郎" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="company">会社名</label>
+                        <input type="text" id="company" name="company" class="form-input" placeholder="株式会社○○">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="email">メールアドレス<span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">電話番号</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="090-1234-5678">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="plan">興味のあるプラン</label>
+                    <select id="plan" name="plan" class="form-select">
+                        <option value="" disabled selected>選択してください</option>
+                        <option value="consulting">AIコンサルティング（10万円/月~）</option>
+                        <option value="development">社内ツール開発（30万円/月~）</option>
+                        <option value="undecided">まだ決めていない / 相談したい</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">ご相談内容<span class="required">*</span></label>
+                    <textarea id="message" name="message" class="form-textarea"
+                        placeholder="現在の課題や、AIで実現したいことをお気軽にお書きください" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit">
+                    無料相談を申し込む
+                    <span class="material-icons">send</span>
+                </button>
+                <p class="cta-micro">
+                    <span class="material-icons">schedule</span>
+                    所要時間 約30分 / オンライン対応
+                </p>
+            </form>
+
+            <!-- サンクスメッセージ -->
+            <div class="thanks-msg" id="thanksMsg">
+                <span class="material-icons">check_circle</span>
+                <h3>お問い合わせありがとうございます</h3>
+                <p>2営業日以内にご返信いたします。<br>お急ぎの場合は、メールにて直接ご連絡ください。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== フッター ===== -->
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-copy">2026 pilotAI. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">プライバシーポリシー</a></li>
+                <li><a href="#">特定商取引法に基づく表記</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // ナビゲーションのスクロール制御
+        const mainNav = document.getElementById('mainNav');
+        const scrollBar = document.getElementById('scrollBar');
+
+        window.addEventListener('scroll', () => {
+            // ナビ背景の切り替え
+            mainNav.classList.toggle('scrolled', window.scrollY > 40);
+            // スクロールプログレスバー
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollBar.style.width = scrolled + '%';
+        }, { passive: true });
+
+        // モバイルメニュー
+        const navHamburger = document.getElementById('navHamburger');
+        const navLinks = document.getElementById('navLinks');
+        navHamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+        // メニューリンクをクリックしたら閉じる
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // スクロールアニメーション (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = Array.from(document.querySelectorAll('.fi'));
+            const show = el => el.classList.add('visible');
+
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(show);
+                return;
+            }
+
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        show(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.06 });
+
+            items.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.92) {
+                    show(el);
+                } else {
+                    io.observe(el);
+                }
+            });
+        });
+
+        // コンタクトフォーム送信処理
+        const contactForm = document.getElementById('contactForm');
+        const thanksMsg = document.getElementById('thanksMsg');
+
+        // APIサーバーのURL（ローカル開発時: http://localhost:3001）
+        const API_URL = 'http://localhost:3001';
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('.form-submit');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="material-icons" style="animation: spin 1s linear infinite;">sync</span> 送信中...';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = {
+                    name: document.getElementById('name').value,
+                    company: document.getElementById('company').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    plan: document.getElementById('plan').value,
+                    message: document.getElementById('message').value
+                };
+
+                const response = await fetch(`${API_URL}/api/contact`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    contactForm.style.display = 'none';
+                    thanksMsg.classList.add('show');
+                } else {
+                    throw new Error(result.error || '送信に失敗しました');
+                }
+            } catch (error) {
+                console.error('送信エラー:', error);
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                alert('送信に失敗しました。時間をおいて再度お試しください。');
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

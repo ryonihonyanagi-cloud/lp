@@ -1,0 +1,14 @@
+# 依存関係
+node_modules/
+api/node_modules/
+
+# 環境変数
+api/.env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# その他
+*.log
