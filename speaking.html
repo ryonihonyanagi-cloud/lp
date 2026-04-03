@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Portfolio | 二本柳亮 — AI時代の水先案内人</title>
+    <meta name="description" content="二本柳亮の登壇実績ポートフォリオ。速報ウェビナー・勉強会・イベントでの登壇一覧。最新AIトレンドを現場に届けるSHIFT AI認定講師。">
+    <!-- OGP -->
+    <meta property="og:title" content="Speaking Portfolio | 二本柳亮">
+    <meta property="og:description" content="速報ウェビナー・勉強会・イベントでの登壇実績。SHIFT AI認定講師 二本柳亮。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="profile.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0f0f12;
+            --bg-surface: #16161d;
+            --bg-card: rgba(255,255,255,0.04);
+            --glass-bg: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.12);
+            --glass-border-hover: rgba(255,255,255,0.25);
+            --text: #f0f0f5;
+            --text-muted: #9b9bb0;
+            --text-dim: #6b6b80;
+            --accent: #f59e42;
+            --accent-glow: rgba(245,158,66,0.25);
+            --accent2: #e8734a;
+            --gradient-warm: linear-gradient(135deg, #f59e42, #e8734a);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --shadow-glass: 0 8px 32px rgba(0,0,0,0.3);
+            --font: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ===== Progress bar ===== */
+        .scroll-indicator {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: var(--gradient-warm); z-index: 300;
+            width: 0%; transition: width 0.08s linear;
+        }
+
+        /* ===== Nav ===== */
+        #mainNav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 40px; transition: var(--transition);
+        }
+        #mainNav.scrolled {
+            background: rgba(15,15,18,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-logo {
+            font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-back {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.85rem; color: var(--text-muted);
+            padding: 8px 16px; border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+        .nav-back:hover { border-color: var(--accent); color: var(--accent); }
+        .nav-back .material-icons { font-size: 16px; }
+
+        @media (max-width: 600px) {
+            #mainNav { padding: 14px 20px; }
+        }
+
+        /* ===== Section utils ===== */
+        .section-inner {
+            max-width: 1200px; margin: 0 auto; padding: 80px 40px;
+        }
+        @media (max-width: 768px) { .section-inner { padding: 60px 20px; } }
+
+        .section-eyebrow {
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+        }
+        .accent { color: var(--accent); }
+        .section-lead {
+            font-size: 1rem; color: var(--text-muted); margin-top: 16px; max-width: 600px;
+        }
+
+        /* ===== Glassmorphism card ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            backdrop-filter: blur(12px);
+            transition: var(--transition);
+        }
+        .glass-card:hover {
+            border-color: var(--glass-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* ===== Fade-in animation ===== */
+        .fi {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fi.visible { opacity: 1; transform: translateY(0); }
+        .fi.delay-1 { transition-delay: 0.1s; }
+        .fi.delay-2 { transition-delay: 0.2s; }
+        .fi.delay-3 { transition-delay: 0.3s; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; pointer-events: none; z-index: 0;
+        }
+        .hero-blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.15;
+        }
+        .hero-blob-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, #f59e42, transparent 70%);
+            top: -10%; left: -15%;
+        }
+        .hero-blob-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #e8734a, transparent 70%);
+            bottom: 5%; right: -10%;
+        }
+        .hero-blob-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, #7c3aed, transparent 70%);
+            top: 40%; left: 55%; opacity: 0.08;
+        }
+        .hero-content {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: center;
+        }
+        @media (max-width: 900px) {
+            .hero-content { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+        }
+
+        .hero-left { }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 50px; padding: 6px 16px;
+            font-size: 0.8rem; font-weight: 500; color: var(--accent);
+            margin-bottom: 28px;
+        }
+        .hero-eyebrow .material-icons { font-size: 16px; }
+        .hero-left h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .hero-left p {
+            font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;
+            margin-bottom: 32px; max-width: 480px;
+        }
+        @media (max-width: 900px) { .hero-left p { margin: 0 auto 32px; } }
+
+        .hero-stats {
+            display: flex; gap: 32px; flex-wrap: wrap;
+        }
+        @media (max-width: 900px) { .hero-stats { justify-content: center; } }
+        .hero-stat-num {
+            font-size: 2rem; font-weight: 900; background: var(--gradient-warm);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;
+        }
+
+        /* Hero right - profile card */
+        .hero-profile-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg); padding: 36px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .hero-photo {
+            width: 120px; height: 120px; border-radius: 50%;
+            overflow: hidden; margin: 0 auto 20px;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-profile-name {
+            font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 6px;
+        }
+        .hero-profile-role {
+            font-size: 0.85rem; color: var(--text-muted); text-align: center;
+            margin-bottom: 24px;
+        }
+        .hero-tags {
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+        }
+        .hero-tag {
+            background: rgba(245,158,66,0.12); border: 1px solid rgba(245,158,66,0.3);
+            color: var(--accent); border-radius: 50px;
+            padding: 4px 12px; font-size: 0.75rem; font-weight: 500;
+        }
+
+        /* ===== FILTER TABS ===== */
+        .filter-wrap {
+            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;
+        }
+        .filter-btn {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 50px; padding: 8px 20px;
+            font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+            cursor: pointer; transition: var(--transition); font-family: var(--font);
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active {
+            background: var(--accent); border-color: var(--accent);
+            color: #0f0f12; font-weight: 700;
+        }
+        .filter-count {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 20px; height: 20px; background: rgba(255,255,255,0.15);
+            border-radius: 50%; font-size: 0.7rem; font-weight: 700;
+            margin-left: 6px;
+        }
+        .filter-btn.active .filter-count { background: rgba(0,0,0,0.2); }
+
+        /* ===== SPEAKING GRID ===== */
+        .speaking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .speaking-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+        }
+        @media (max-width: 480px) {
+            .speaking-grid { grid-template-columns: 1fr; }
+        }
+
+        .speaking-card {
+            overflow: hidden; cursor: pointer; position: relative;
+        }
+        .speaking-card.hidden { display: none; }
+        .speaking-card-img {
+            width: 100%; aspect-ratio: 16/9; object-fit: cover;
+            display: block; transition: transform 0.5s ease;
+        }
+        .speaking-card:hover .speaking-card-img { transform: scale(1.04); }
+        .speaking-card-body { padding: 16px 20px; }
+        .speaking-card-meta {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+        }
+        .speaking-card-date {
+            font-size: 0.75rem; font-weight: 600; color: var(--accent);
+            font-family: 'Inter', sans-serif;
+        }
+        .speaking-card-type {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .type-webinar { background: rgba(245,158,66,0.15); color: #f59e42; }
+        .type-workshop { background: rgba(99,102,241,0.15); color: #818cf8; }
+        .type-event { background: rgba(16,185,129,0.15); color: #34d399; }
+        .speaking-card-title {
+            font-size: 0.95rem; font-weight: 600; line-height: 1.5;
+        }
+
+        /* ===== PHOTOS SECTION (ゆるっと) ===== */
+        .photos-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+            margin-top: 12px;
+        }
+        .photos-grid img {
+            width: 100%; aspect-ratio: 4/3; object-fit: cover;
+            border-radius: 8px; cursor: pointer;
+            transition: var(--transition);
+        }
+        .photos-grid img:hover { opacity: 0.8; transform: scale(1.02); }
+
+        /* ===== TIMELINE SECTION ===== */
+        .timeline-wrap {
+            position: relative; max-width: 720px; margin: 0 auto;
+        }
+        .timeline-wrap::before {
+            content: '';
+            position: absolute; left: 80px; top: 0; bottom: 0; width: 1px;
+            background: var(--glass-border);
+        }
+        @media (max-width: 600px) { .timeline-wrap::before { left: 60px; } }
+
+        .timeline-item {
+            display: flex; gap: 32px; margin-bottom: 32px; position: relative;
+        }
+        .timeline-date {
+            flex: 0 0 80px; text-align: right;
+            font-size: 0.75rem; font-family: 'Inter', sans-serif;
+            font-weight: 600; color: var(--text-dim); padding-top: 4px;
+            line-height: 1.4;
+        }
+        @media (max-width: 600px) { .timeline-date { flex: 0 0 60px; } }
+        .timeline-dot {
+            position: absolute; left: 74px; top: 8px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--accent); border: 2px solid var(--bg);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        @media (max-width: 600px) { .timeline-dot { left: 54px; } }
+        .timeline-content {
+            flex: 1; background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm); padding: 14px 16px;
+            transition: var(--transition);
+        }
+        .timeline-content:hover {
+            border-color: var(--glass-border-hover);
+            background: rgba(255,255,255,0.08);
+        }
+        .timeline-title { font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
+        .timeline-badge {
+            display: inline-block; margin-top: 6px;
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+        }
+
+        /* ===== CTA ===== */
+        #cta { position: relative; overflow: hidden; }
+        .cta-bg { position: absolute; inset: 0; pointer-events: none; }
+        .cta-blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.12;
+        }
+        .cta-blob-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, #f59e42, transparent 70%);
+            top: -100px; left: -100px;
+        }
+        .cta-blob-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #e8734a, transparent 70%);
+            bottom: -80px; right: -80px;
+        }
+        .cta-inner {
+            max-width: 680px; margin: 0 auto; text-align: center;
+            position: relative; z-index: 1;
+        }
+        .cta-inner h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .cta-inner p { color: var(--text-muted); font-size: 1rem; margin-bottom: 36px; }
+        .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gradient-warm); color: #fff;
+            padding: 14px 28px; border-radius: 50px;
+            font-weight: 700; font-size: 0.95rem; font-family: var(--font);
+            border: none; cursor: pointer; transition: var(--transition);
+            box-shadow: 0 8px 24px rgba(245,158,66,0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,158,66,0.4); }
+        .btn-primary .material-icons { font-size: 18px; }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; border: 1px solid var(--glass-border);
+            color: var(--text); padding: 14px 28px; border-radius: 50px;
+            font-weight: 600; font-size: 0.95rem; font-family: var(--font);
+            cursor: pointer; transition: var(--transition);
+        }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-ghost .material-icons { font-size: 18px; }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center; padding: 32px 20px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-dim); font-size: 0.8rem;
+        }
+        footer a { color: var(--accent); }
+
+        /* ===== Lightbox ===== */
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+            align-items: center; justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw; max-height: 90vh; border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 24px;
+            color: white; background: rgba(255,255,255,0.15);
+            border: none; border-radius: 50%; width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 20px; transition: var(--transition);
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+        /* ===== Section divider ===== */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            max-width: 600px; margin: 0 auto;
+        }
+
+        /* ===== View toggle ===== */
+        .view-toggle {
+            display: flex; gap: 8px; margin-left: auto;
+        }
+        .view-btn {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            color: var(--text-muted); border-radius: 8px;
+            width: 36px; height: 36px; display: flex;
+            align-items: center; justify-content: center;
+            cursor: pointer; transition: var(--transition);
+        }
+        .view-btn.active { border-color: var(--accent); color: var(--accent); }
+        .view-btn .material-icons { font-size: 18px; }
+
+        .controls-row {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+            margin-bottom: 40px;
+        }
+        .controls-row .filter-wrap { margin-bottom: 0; flex: 1; }
+
+        /* ===== Timeline view (hidden by default) ===== */
+        .timeline-section { display: none; }
+        .timeline-section.active { display: block; }
+        .grid-section { display: block; }
+        .grid-section.hidden { display: none; }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-indicator" id="scrollBar"></div>
+
+    <!-- Nav -->
+    <nav id="mainNav">
+        <a href="#" class="nav-logo">pilot<span>AI</span></a>
+        <a href="index.html" class="nav-back">
+            <span class="material-icons">arrow_back</span>
+            サービスページへ
+        </a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+        </div>
+        <div class="section-inner" style="width:100%;">
+            <div class="hero-content">
+
+                <div class="hero-left">
+                    <div class="hero-eyebrow fi">
+                        <span class="material-icons">record_voice_over</span>
+                        Speaking Portfolio
+                    </div>
+                    <h1 class="fi delay-1">
+                        最新AIを、<br><span class="accent">現場に届ける</span>。
+                    </h1>
+                    <p class="fi delay-2">
+                        速報ウェビナー・勉強会・リアルイベント。<br>
+                        アップデートが出たその日に、わかりやすく・すぐ使える形で発信しています。
+                    </p>
+                    <div class="hero-stats fi delay-3">
+                        <div>
+                            <div class="hero-stat-num">13</div>
+                            <div class="hero-stat-label">登壇実績</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-num">6<span style="font-size:1rem">ヶ月</span></div>
+                            <div class="hero-stat-label">2025.09〜現在</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-num">40+</div>
+                            <div class="hero-stat-label">対応AIツール</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fi delay-2">
+                    <div class="hero-profile-card glass-card">
+                        <div class="hero-photo">
+                            <img src="profile.jpg" alt="二本柳 亮">
+                        </div>
+                        <div class="hero-profile-name">二本柳 亮</div>
+                        <div class="hero-profile-role">AI時代の水先案内人 / SHIFT AI認定講師</div>
+                        <div class="hero-tags">
+                            <span class="hero-tag">速報ウェビナー</span>
+                            <span class="hero-tag">AIエージェント</span>
+                            <span class="hero-tag">Claude Code</span>
+                            <span class="hero-tag">SHIFT AI</span>
+                            <span class="hero-tag">10xc</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== SPEAKING LIST ===== -->
+    <section id="speaking">
+        <div class="section-inner">
+
+            <div class="section-header fi" style="margin-bottom: 40px;">
+                <p class="section-eyebrow">Speaking History</p>
+                <h2 class="section-title">登壇<span class="accent">実績</span></h2>
+                <p class="section-lead">2025年9月〜2026年2月の全登壇一覧。新着順に並んでいます。</p>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-row fi delay-1">
+                <div class="filter-wrap">
+                    <button class="filter-btn active" data-filter="all">
+                        全て <span class="filter-count">13</span>
+                    </button>
+                    <button class="filter-btn" data-filter="webinar">
+                        速報ウェビナー <span class="filter-count">9</span>
+                    </button>
+                    <button class="filter-btn" data-filter="workshop">
+                        勉強会 / 講座 <span class="filter-count">3</span>
+                    </button>
+                    <button class="filter-btn" data-filter="event">
+                        リアルイベント <span class="filter-count">1</span>
+                    </button>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" id="btnGrid" title="グリッド表示">
+                        <span class="material-icons">grid_view</span>
+                    </button>
+                    <button class="view-btn" id="btnTimeline" title="タイムライン表示">
+                        <span class="material-icons">view_timeline</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid View -->
+            <div class="grid-section" id="gridSection">
+                <div class="speaking-grid">
+
+                    <div class="glass-card speaking-card fi" data-type="workshop">
+                        <img src="登壇実績/20260223_AI時代_人間は考える側でいられるか.jpeg"
+                            alt="AI時代、人間は考える側でいられるか" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.02.23</span>
+                                <span class="speaking-card-type type-workshop">勉強会</span>
+                            </div>
+                            <div class="speaking-card-title">AI時代、人間は考える側でいられるか</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-1" data-type="event">
+                        <img src="登壇実績/20260222_ゆるっと作業会東京.jpeg"
+                            alt="ゆるっと作業会 東京" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.02.22</span>
+                                <span class="speaking-card-type type-event">イベント</span>
+                            </div>
+                            <div class="speaking-card-title">ゆるっと作業会 東京</div>
+                            <div class="photos-grid">
+                                <img src="登壇実績/ゆるっと0222_1.jpeg" alt="ゆるっと作業会 東京 写真1" onclick="openLightbox(this.src)" loading="lazy">
+                                <img src="登壇実績/ゆるっと0222_2.jpeg" alt="ゆるっと作業会 東京 写真2" onclick="openLightbox(this.src)" loading="lazy">
+                                <img src="登壇実績/ゆるっと0222_3.jpeg" alt="ゆるっと作業会 東京 写真3" onclick="openLightbox(this.src)" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-2" data-type="webinar">
+                        <img src="登壇実績/20260220_Gemini_Claude_Grok_最新AI三大アップデート.jpeg"
+                            alt="Gemini・Claude・Grok 最新AI三大アップデート" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.02.20</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Gemini / Claude / Grok 最新AI三大アップデート</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-3" data-type="webinar">
+                        <img src="登壇実績/20260206_ClaudeOpus4.6とCodex_速報ウェビナー.jpeg"
+                            alt="Claude Opus 4.6 & Codex 速報ウェビナー" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.02.06</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Claude Opus 4.6 & Codex 速報ウェビナー</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi" data-type="webinar">
+                        <img src="登壇実績/20260206_UI-TARS_LLMは目を持ったか.jpeg"
+                            alt="UI-TARS: LLMは目を持ったか" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.02.06</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">UI-TARS: LLMは目を持ったか</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-1" data-type="workshop">
+                        <img src="登壇実績/20260121_ClaudeCowork_新しい可能性.jpeg"
+                            alt="Claude Cowork 新しい可能性" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2026.01.21</span>
+                                <span class="speaking-card-type type-workshop">勉強会</span>
+                            </div>
+                            <div class="speaking-card-title">Claude Cowork 新しい可能性</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-2" data-type="webinar">
+                        <img src="登壇実績/20251213_GoogleWorkspaceStudio_正式リリース.jpeg"
+                            alt="Google Workspace Studio 正式リリース" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.12.13</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Google Workspace Studio 正式リリース</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-3" data-type="workshop">
+                        <img src="登壇実績/20251113_AIエージェント活用講座.jpeg"
+                            alt="AIエージェント活用講座" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.11.13</span>
+                                <span class="speaking-card-type type-workshop">講座</span>
+                            </div>
+                            <div class="speaking-card-title">AIエージェント活用講座</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi" data-type="webinar">
+                        <img src="登壇実績/20251023_Manus1.5_徹底解説ウェビナー.jpeg"
+                            alt="Manus 1.5 徹底解説ウェビナー" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.10.23</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Manus 1.5 徹底解説ウェビナー</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-1" data-type="webinar">
+                        <img src="登壇実績/20251022_Atlas解禁_OpenAIブラウザ速報.jpeg"
+                            alt="Atlas解禁・OpenAIブラウザ速報" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.10.22</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Atlas解禁 / OpenAIブラウザ速報</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-2" data-type="webinar">
+                        <img src="登壇実績/20251016_GoogleVeo3.1_アップデート完全解説.jpeg"
+                            alt="Google Veo 3.1 アップデート完全解説" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.10.16</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Google Veo 3.1 アップデート完全解説</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi delay-3" data-type="webinar">
+                        <img src="登壇実績/20251009_GoogleOpal_AIエージェント研究回.jpeg"
+                            alt="Google Opal AIエージェント研究回" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.10.09</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">Google Opal AIエージェント研究回</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card speaking-card fi" data-type="webinar">
+                        <img src="登壇実績/20250912_脱手入力_ハンズフリーAI仕事術.jpeg"
+                            alt="脱手入力 ハンズフリーAI仕事術" class="speaking-card-img" loading="lazy">
+                        <div class="speaking-card-body">
+                            <div class="speaking-card-meta">
+                                <span class="speaking-card-date">2025.09.12</span>
+                                <span class="speaking-card-type type-webinar">速報</span>
+                            </div>
+                            <div class="speaking-card-title">脱手入力 ハンズフリーAI仕事術</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Timeline View -->
+            <div class="timeline-section" id="timelineSection">
+                <div class="timeline-wrap">
+
+                    <div class="timeline-item fi">
+                        <div class="timeline-date">2026<br>02.23</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">AI時代、人間は考える側でいられるか</div>
+                            <span class="timeline-badge type-workshop">勉強会</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-1">
+                        <div class="timeline-date">2026<br>02.22</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">ゆるっと作業会 東京</div>
+                            <span class="timeline-badge type-event">リアルイベント</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-2">
+                        <div class="timeline-date">2026<br>02.20</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Gemini / Claude / Grok 最新AI三大アップデート</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-3">
+                        <div class="timeline-date">2026<br>02.06</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Claude Opus 4.6 & Codex 速報ウェビナー</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi">
+                        <div class="timeline-date">2026<br>02.06</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">UI-TARS: LLMは目を持ったか</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-1">
+                        <div class="timeline-date">2026<br>01.21</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Claude Cowork 新しい可能性</div>
+                            <span class="timeline-badge type-workshop">勉強会</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-2">
+                        <div class="timeline-date">2025<br>12.13</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Google Workspace Studio 正式リリース</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-3">
+                        <div class="timeline-date">2025<br>11.13</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">AIエージェント活用講座</div>
+                            <span class="timeline-badge type-workshop">講座</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi">
+                        <div class="timeline-date">2025<br>10.23</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Manus 1.5 徹底解説ウェビナー</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-1">
+                        <div class="timeline-date">2025<br>10.22</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Atlas解禁 / OpenAIブラウザ速報</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-2">
+                        <div class="timeline-date">2025<br>10.16</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Google Veo 3.1 アップデート完全解説</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi delay-3">
+                        <div class="timeline-date">2025<br>10.09</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Google Opal AIエージェント研究回</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fi">
+                        <div class="timeline-date">2025<br>09.12</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">脱手入力 ハンズフリーAI仕事術</div>
+                            <span class="timeline-badge type-webinar">速報ウェビナー</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== CTA ===== -->
+    <section id="cta">
+        <div class="cta-bg">
+            <div class="cta-blob cta-blob-1"></div>
+            <div class="cta-blob cta-blob-2"></div>
+        </div>
+        <div class="section-inner">
+            <div class="cta-inner fi">
+                <p class="section-eyebrow">Speaking Inquiry</p>
+                <h2>登壇・研修の<span class="accent">ご依頼</span>はこちら</h2>
+                <p>
+                    最新AI速報ウェビナー、社内AI研修、勉強会登壇など、<br>
+                    テーマ・形式に合わせてご提案します。お気軽にご相談ください。
+                </p>
+                <div class="cta-actions">
+                    <a href="index.html#cta" class="btn-primary">
+                        <span class="material-icons">mail_outline</span>
+                        無料相談を申し込む
+                    </a>
+                    <a href="index.html" class="btn-ghost">
+                        <span class="material-icons">home</span>
+                        サービス詳細を見る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 <a href="index.html">pilotAI</a> — 二本柳 亮</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+        // ===== Scroll progress =====
+        window.addEventListener('scroll', () => {
+            const bar = document.getElementById('scrollBar');
+            const nav = document.getElementById('mainNav');
+            const p = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            bar.style.width = p + '%';
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // ===== Fade-in =====
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fi').forEach(el => observer.observe(el));
+
+        // ===== Filter =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.speaking-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.type === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // ===== View toggle =====
+        document.getElementById('btnGrid').addEventListener('click', () => {
+            document.getElementById('gridSection').classList.remove('hidden');
+            document.getElementById('timelineSection').classList.remove('active');
+            document.getElementById('btnGrid').classList.add('active');
+            document.getElementById('btnTimeline').classList.remove('active');
+            // Filter buttons visible
+            document.querySelector('.filter-wrap').style.display = '';
+        });
+        document.getElementById('btnTimeline').addEventListener('click', () => {
+            document.getElementById('gridSection').classList.add('hidden');
+            document.getElementById('timelineSection').classList.add('active');
+            document.getElementById('btnTimeline').classList.add('active');
+            document.getElementById('btnGrid').classList.remove('active');
+            // Reset filter on timeline switch
+            document.querySelector('.filter-wrap').style.display = 'none';
+            // Trigger visibility for timeline items
+            document.querySelectorAll('.timeline-item').forEach(el => {
+                el.classList.remove('visible');
+                setTimeout(() => observer.observe(el), 50);
+            });
+        });
+
+        // ===== Lightbox =====
+        function openLightbox(src) {
+            event.stopPropagation();
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+</body>
+</html>
