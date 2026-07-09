@@ -4,57 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pilotAI | AIの波を、あなたのビジネスに。 — 二本柳亮</title>
-    <meta name="description"
-        content="AI時代の水先案内人 二本柳亮。GPT-5.4・Claude Code・Geminiなど最新AIの導入支援から、AIエージェント開発、業務自動化システム構築、社内研修まで。週次ミーティングで伴走し、ビジネスのAI化を確実に前進させます。">
+    <title>二本柳亮 | AI顧問・生成AI活用の伴走者</title>
+    <meta name="description" content="二本柳亮（にほんやなぎ りょう）のAI顧問プロフィール。生成AI活用・DX推進の相談から、サイト構築・業務自動化の実装まで伴走します。SHIFT AI講師。">
     <!-- OGP -->
-    <meta property="og:title" content="pilotAI | AIの波を、あなたのビジネスに。">
-    <meta property="og:description"
-        content="最新AIトレンドの把握からAIエージェント開発、社内ツール構築まで。SHIFT AI認定講師 二本柳亮が、あなたのビジネスのAI化を伴走支援します。">
+    <meta property="og:title" content="二本柳亮 | AI顧問・生成AI活用の伴走者">
+    <meta property="og:description" content="生成AI活用・DX推進の相談から実装まで。ファンクラブサイト構築から契約書業務の自動化まで、幅広く伴走してきました。">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="profile.jpg">
+    <meta property="og:image" content="https://lp-eight-kohl.vercel.app/assets/profile-hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="pilotAI | AIの波を、あなたのビジネスに。">
-    <meta name="twitter:description" content="最新AIトレンドの把握からAIエージェント開発、社内ツール構築まで。SHIFT AI認定講師 二本柳亮が伴走支援。">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        /* ===== リセット & 基本設定 ===== */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg: #0f0f12;
             --bg-surface: #16161d;
-            --bg-card: rgba(255, 255, 255, 0.04);
-            --glass-bg: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-border-hover: rgba(255, 255, 255, 0.25);
+            --bg-card: rgba(255,255,255,0.04);
+            --glass-bg: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.12);
+            --glass-border-hover: rgba(255,255,255,0.25);
             --text: #f0f0f5;
             --text-muted: #9b9bb0;
             --text-dim: #6b6b80;
             --accent: #f59e42;
-            --accent-glow: rgba(245, 158, 66, 0.25);
+            --accent-glow: rgba(245,158,66,0.25);
             --accent2: #e8734a;
             --gradient-warm: linear-gradient(135deg, #f59e42, #e8734a);
             --radius: 16px;
             --radius-sm: 10px;
             --radius-lg: 24px;
-            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-glass: 0 8px 32px rgba(0,0,0,0.3);
             --font: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
             --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font);
@@ -65,1348 +50,312 @@
             overflow-x: hidden;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
 
-        /* ===== スクロールプログレスバー ===== */
+        /* ===== Progress bar ===== */
         .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: var(--gradient-warm);
-            z-index: 300;
-            width: 0%;
-            transition: width 0.08s linear;
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: var(--gradient-warm); z-index: 300;
+            width: 0%; transition: width 0.08s linear;
         }
 
-        /* ===== ナビゲーション ===== */
+        /* ===== Nav ===== */
         #mainNav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 40px;
-            transition: var(--transition);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 40px; transition: var(--transition);
         }
-
         #mainNav.scrolled {
-            background: rgba(15, 15, 18, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15,15,18,0.88);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--glass-border);
         }
-
-        .nav-logo {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-        }
-
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
+        .nav-logo { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
         .nav-links a {
-            font-size: 0.875rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            transition: color 0.3s;
-            letter-spacing: 0.02em;
+            font-size: 0.88rem; color: var(--text-muted); transition: var(--transition);
         }
-
-        .nav-links a:hover {
-            color: var(--text);
-        }
-
+        .nav-links a:hover { color: var(--text); }
         .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 24px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text);
-            transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.85rem; font-weight: 600; color: var(--bg);
+            background: var(--gradient-warm);
+            padding: 10px 22px; border-radius: 50px;
+        }
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            #mainNav { padding: 14px 20px; }
         }
 
-        .nav-cta:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 24px var(--accent-glow);
-        }
-
-        .nav-cta .material-icons {
-            font-size: 16px;
-        }
-
-        /* モバイルナビ */
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--text);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-
-        @media (max-width: 768px) {
-            #mainNav {
-                padding: 14px 20px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 56px;
-                left: 0;
-                right: 0;
-                background: rgba(15, 15, 18, 0.95);
-                backdrop-filter: blur(20px);
-                padding: 24px;
-                gap: 20px;
-                border-bottom: 1px solid var(--glass-border);
-            }
-        }
-
-        /* ===== セクション共通 ===== */
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 64px 0;
-            }
-        }
+        /* ===== Section utils ===== */
+        .section-inner { max-width: 1100px; margin: 0 auto; padding: 100px 40px; }
+        @media (max-width: 768px) { .section-inner { padding: 64px 20px; } }
 
         .section-eyebrow {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
         }
-
         .section-title {
-            font-size: clamp(1.6rem, 3.5vw, 2.25rem);
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700; line-height: 1.4; letter-spacing: -0.02em;
+            word-break: keep-all; overflow-wrap: anywhere;
         }
-
-        .section-title .accent {
-            color: var(--accent);
-        }
-
+        .accent { color: var(--accent); }
         .section-lead {
-            font-size: 1rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            line-height: 1.8;
+            font-size: 1rem; color: var(--text-muted); margin-top: 18px; max-width: 640px;
         }
 
-        .section-header {
-            margin-bottom: 56px;
-        }
-
-        .section-header.center {
-            text-align: center;
-        }
-
-        .section-header.center .section-lead {
-            margin: 0 auto;
-        }
-
-        /* ===== フェードイン ===== */
-        .fi {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fi.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fi.delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .fi.delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .fi.delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        .fi.delay-4 {
-            transition-delay: 0.4s;
-        }
-
-        /* ===== グラスカード共通 ===== */
+        /* ===== Glassmorphism card ===== */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg);
-            padding: 36px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(12px);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
-
         .glass-card:hover {
             border-color: var(--glass-border-hover);
             transform: translateY(-4px);
             box-shadow: var(--shadow-glass);
         }
 
-        /* ===== Hero ===== */
+        /* ===== Fade-in animation ===== */
+        .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fi.visible { opacity: 1; transform: translateY(0); }
+        .fi.delay-1 { transition-delay: 0.1s; }
+        .fi.delay-2 { transition-delay: 0.2s; }
+        .fi.delay-3 { transition-delay: 0.3s; }
+
+        /* ===== HERO ===== */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; overflow: hidden;
         }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 30% 20%, rgba(245, 158, 66, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(232, 115, 74, 0.06) 0%, transparent 50%),
-                var(--bg);
-        }
-
+        .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
         .hero-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: float 10s ease-in-out infinite;
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.16; animation: float 8s ease-in-out infinite;
         }
-
         .hero-blob-1 {
-            width: 400px;
-            height: 400px;
-            background: rgba(245, 158, 66, 0.12);
-            top: 10%;
-            right: 10%;
+            width: 620px; height: 620px;
+            background: radial-gradient(circle, #f59e42, transparent 70%);
+            top: -12%; left: -16%;
         }
-
         .hero-blob-2 {
-            width: 300px;
-            height: 300px;
-            background: rgba(232, 115, 74, 0.08);
-            bottom: 20%;
-            left: 5%;
-            animation-delay: -3s;
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, #e8734a, transparent 70%);
+            bottom: -10%; right: -10%;
+            animation-delay: 2s;
         }
-
-        .hero-blob-3 {
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.03);
-            top: 50%;
-            left: 40%;
-            animation-delay: -5s;
-        }
-
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-30px) scale(1.05);
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-24px) scale(1.05); }
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 720px;
+        .hero-inner {
+            position: relative; z-index: 1;
+            max-width: 1100px; margin: 0 auto; padding: 140px 40px 80px;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center;
         }
-
+        @media (max-width: 860px) {
+            .hero-inner { grid-template-columns: 1fr; padding: 120px 20px 60px; gap: 36px; }
+        }
         .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 28px;
-            backdrop-filter: blur(10px);
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+            color: var(--accent); text-transform: uppercase;
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            padding: 8px 18px; margin-bottom: 24px;
         }
-
-        .hero-eyebrow .material-icons {
-            font-size: 14px;
-        }
-
         .hero h1 {
-            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
+            font-size: clamp(2rem, 4.6vw, 3.2rem);
+            font-weight: 700; line-height: 1.5; letter-spacing: -0.02em;
+            word-break: keep-all; overflow-wrap: anywhere;
         }
-
-        .hero h1 .accent {
-            background: var(--gradient-warm);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
         .hero-sub {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.9;
-            margin-bottom: 40px;
+            margin-top: 24px; font-size: 1.05rem; color: var(--text-muted);
             max-width: 560px;
         }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* CTAボタン */
+        .hero-ctas { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 36px;
-            background: var(--gradient-warm);
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 50px;
-            border: none;
-            transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px; border-radius: 50px;
+            background: var(--gradient-warm); color: #17110a;
+            font-size: 0.95rem; font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 24px var(--accent-glow);
-            cursor: pointer;
-            text-decoration: none;
         }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(245, 158, 66, 0.4);
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 28px; border-radius: 50px;
+            border: 1px solid var(--glass-border); color: var(--text);
+            font-size: 0.95rem; font-weight: 600; transition: var(--transition);
         }
-
-        .btn-primary .material-icons {
-            font-size: 18px;
-            transition: transform 0.3s;
+        .btn-secondary:hover { border-color: var(--glass-border-hover); }
+        .hero-visual {
+            position: relative; border-radius: var(--radius-lg);
+            overflow: hidden; border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-glass);
         }
-
-        .btn-primary:hover .material-icons {
-            transform: translateX(4px);
-        }
-
-        .btn-ghost {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 28px;
-            background: transparent;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .btn-ghost:hover {
-            color: var(--text);
-            border-color: var(--glass-border-hover);
-            background: var(--glass-bg);
-        }
-
-        /* ===== Problem ===== */
-        #problem {
-            background: var(--bg-surface);
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .problem-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .problem-card {
-            padding: 36px 28px;
-        }
-
-        .problem-card .card-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(245, 158, 66, 0.1);
-            border-radius: 14px;
-            margin-bottom: 20px;
-        }
-
-        .problem-card .card-icon .material-icons {
-            font-size: 24px;
-            color: var(--accent);
-        }
-
-        .problem-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
-
-        .problem-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* ===== Solutions ===== */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .solutions-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .solution-card {
-            padding: 36px 28px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-warm);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .solution-card:hover::before {
-            opacity: 1;
-        }
-
-        .solution-card .card-icon {
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(245, 158, 66, 0.15), rgba(232, 115, 74, 0.08));
-            border-radius: 16px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .solution-card:hover .card-icon {
-            transform: scale(1.1);
-        }
-
-        .solution-card .card-icon .material-icons {
-            font-size: 28px;
-            color: var(--accent);
-        }
-
-        .solution-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
-
-        .solution-card p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .solution-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .solution-tag {
-            padding: 4px 10px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--accent);
-            background: rgba(245, 158, 66, 0.08);
-            border: 1px solid rgba(245, 158, 66, 0.15);
-            border-radius: 50px;
-            letter-spacing: 0.02em;
-        }
-
-        /* ===== Service Plans ===== */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
-        }
-
-        @media (max-width: 768px) {
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .plan-card {
-            padding: 44px 36px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .plan-card.featured {
-            border-color: rgba(245, 158, 66, 0.3);
-        }
-
-        .plan-card.featured::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: var(--radius-lg);
-            padding: 1px;
-            background: var(--gradient-warm);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-
-        .plan-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            width: fit-content;
-        }
-
-        .plan-badge.consulting {
-            background: rgba(245, 158, 66, 0.12);
-            color: var(--accent);
-        }
-
-        .plan-badge.development {
-            background: rgba(100, 180, 255, 0.12);
-            color: #64b4ff;
-        }
-
-        .plan-card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-
-        .plan-card .plan-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 28px;
-        }
-
-        .plan-price {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            letter-spacing: -0.03em;
-        }
-
-        .plan-price span {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--text-muted);
-            margin-left: 4px;
-        }
-
-        .plan-note {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            margin-bottom: 28px;
-        }
-
-        .plan-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 36px;
-            flex-grow: 1;
-        }
-
-        .plan-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .plan-features li .material-icons {
-            font-size: 18px;
-            color: var(--accent);
-            margin-top: 2px;
-            flex-shrink: 0;
+        .hero-visual img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+        .hero-visual::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(15,15,18,0.55) 100%);
         }
 
         /* ===== About ===== */
-        #about {
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+            margin-top: 48px;
+        }
+        @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; }
+        .about-quote {
+            border-left: 3px solid var(--accent);
+            padding: 20px 28px; background: var(--bg-card);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 1.05rem; color: var(--text);
+        }
+        .about-facts { display: flex; flex-direction: column; gap: 20px; }
+        .fact-card {
+            padding: 24px; display: flex; gap: 16px; align-items: flex-start;
+        }
+        .fact-card .material-icons { color: var(--accent); font-size: 26px; margin-top: 2px; }
+        .fact-card h3 { font-size: 1rem; margin-bottom: 6px; }
+        .fact-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ===== Skills ===== */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+        @media (max-width: 960px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .grid-4 { grid-template-columns: 1fr; } }
+        .skill-card { padding: 28px 24px; }
+        .skill-card .material-icons {
+            color: var(--accent); font-size: 30px;
+            width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+            background: var(--accent-glow); border-radius: 12px; margin-bottom: 18px;
+        }
+        .skill-card h3 { font-size: 1.02rem; margin-bottom: 10px; }
+        .skill-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+        /* ===== Works ===== */
+        .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 860px) { .works-grid { grid-template-columns: 1fr; } }
+        .work-card { padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+        .work-head { display: flex; align-items: center; gap: 14px; }
+        .work-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--gradient-warm); display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .work-icon .material-icons { color: #17110a; font-size: 24px; }
+        .work-head h3 { font-size: 1.15rem; }
+        .work-head .work-tag { font-size: 0.78rem; color: var(--text-dim); }
+        .work-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .work-list li {
+            font-size: 0.92rem; color: var(--text-muted);
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .work-list .material-icons { font-size: 16px; color: var(--accent); margin-top: 3px; }
+
+        /* ===== Process ===== */
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+        @media (max-width: 960px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+        .step { padding: 28px 22px; }
+        .step-num {
+            font-size: 0.85rem; font-weight: 700; color: var(--accent);
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .step h3 { font-size: 1rem; margin-bottom: 8px; }
+        .step p { font-size: 0.86rem; color: var(--text-muted); }
+
+        /* ===== Speaking ===== */
+        .speaking-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px;
+        }
+        @media (max-width: 860px) { .speaking-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .speaking-grid { grid-template-columns: 1fr; } }
+        .speaking-card { overflow: hidden; }
+        .speaking-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .speaking-card figcaption { padding: 16px 18px; font-size: 0.85rem; color: var(--text-muted); }
+        .speaking-more { text-align: center; margin-top: 40px; }
+        .link-more {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.92rem; color: var(--accent); border-bottom: 1px solid var(--accent-glow);
+            padding-bottom: 2px;
+        }
+        .link-more .material-icons { font-size: 18px; }
+
+        /* ===== Contact / CTA ===== */
+        .cta-section {
+            position: relative; overflow: hidden;
             background: var(--bg-surface);
         }
+        .cta-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+        .cta-inner .section-title { margin-bottom: 4px; }
+        .cta-note { margin-top: 20px; font-size: 0.85rem; color: var(--text-dim); }
+        .cta-note .material-icons { font-size: 15px; vertical-align: -2px; margin-right: 4px; color: var(--accent); }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 56px;
-            align-items: start;
-        }
+        /* ===== Wave ===== */
+        .wave { line-height: 0; }
+        .wave svg { display: block; width: 100%; height: 70px; }
 
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                text-align: center;
-            }
-        }
-
-        .about-photo {
-            position: relative;
-        }
-
-        .about-photo-frame {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: var(--radius-lg);
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .about-photo-frame::before {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: rgba(245, 158, 66, 0.15);
-            border-radius: 50%;
-            filter: blur(40px);
-            top: 20%;
-            right: -10%;
-        }
-
-        .about-photo-placeholder {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(245, 158, 66, 0.2), rgba(232, 115, 74, 0.15));
-            border: 2px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .about-photo-placeholder .material-icons {
-            font-size: 64px;
-            color: var(--text-dim);
-        }
-
-        .about-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            letter-spacing: -0.02em;
-        }
-
-        .about-role {
-            font-size: 0.88rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .about-text {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.9;
-            margin-bottom: 32px;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .about-stats {
-                justify-items: center;
-            }
-        }
-
-        .about-stat {
-            text-align: center;
-            padding: 20px 12px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius);
-        }
-
-        .about-stat-num {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: -0.03em;
-        }
-
-        .about-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            margin-top: 4px;
-        }
-
-        /* ===== Speaking (登壇実績) ===== */
-        .speaking-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .speaking-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 540px) {
-            .speaking-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .speaking-card {
-            cursor: default;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .speaking-card-img {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            display: block;
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-            transition: transform 0.5s ease;
-        }
-
-        .speaking-card:hover .speaking-card-img {
-            transform: scale(1.03);
-        }
-
-        .speaking-card-body {
-            padding: 18px 22px;
-        }
-
-        .speaking-card-date {
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-        }
-
-        .speaking-card-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            line-height: 1.5;
-            letter-spacing: -0.01em;
-        }
-
-        /* ===== CTA セクション ===== */
-        #cta {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-        }
-
-        .cta-bg-blob-1 {
-            width: 500px;
-            height: 500px;
-            background: rgba(245, 158, 66, 0.1);
-            top: -200px;
-            right: -100px;
-        }
-
-        .cta-bg-blob-2 {
-            width: 400px;
-            height: 400px;
-            background: rgba(232, 115, 74, 0.06);
-            bottom: -150px;
-            left: -100px;
-        }
-
-        .cta-inner {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .cta-inner h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.03em;
-        }
-
-        .cta-inner p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .cta-micro {
-            margin-top: 16px;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        .cta-micro .material-icons {
-            font-size: 14px;
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-
-        /* ===== フッター ===== */
+        /* ===== Footer ===== */
         footer {
-            padding: 40px 0;
+            padding: 40px 40px; text-align: center;
+            color: var(--text-dim); font-size: 0.82rem;
             border-top: 1px solid var(--glass-border);
         }
-
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .footer-copy {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-muted);
-        }
-
-        @media (max-width: 768px) {
-            .footer-inner {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-        }
-
-        /* ===== コンタクトフォーム ===== */
-        .contact-form {
-            max-width: 540px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            letter-spacing: 0.02em;
-        }
-
-        .form-label .required {
-            color: var(--accent);
-            margin-left: 4px;
-            font-size: 0.7rem;
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 14px 18px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-sm);
-            color: var(--text);
-            font-family: var(--font);
-            font-size: 0.9rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: var(--text-dim);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        .form-select {
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239b9bb0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 40px;
-            cursor: pointer;
-        }
-
-        .form-select option {
-            background: #1e1e28;
-            color: var(--text);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        @media (max-width: 540px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .form-submit {
-            width: 100%;
-            margin-top: 8px;
-        }
-
-        /* サンクスメッセージ */
-        .thanks-msg {
-            display: none;
-            text-align: center;
-            padding: 48px 24px;
-        }
-
-        .thanks-msg.show {
-            display: block;
-        }
-
-        .thanks-msg .material-icons {
-            font-size: 56px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .thanks-msg h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .thanks-msg p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* ===== セクション区切り ===== */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        footer a { color: var(--text-muted); }
+        footer a:hover { color: var(--accent); }
     </style>
 </head>
 
 <body>
-
-    <!-- スクロールプログレスバー -->
     <div class="scroll-indicator" id="scrollBar"></div>
 
-    <!-- ナビゲーション -->
     <nav id="mainNav">
-        <a href="#" class="nav-logo">pilot<span>AI</span></a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#problem">課題</a></li>
-            <li><a href="#solutions">できること</a></li>
-            <li><a href="#plans">サービス</a></li>
-            <li><a href="#about">プロフィール</a></li>
-            <li><a href="#speaking">登壇実績</a></li>
+        <a href="#hero" class="nav-logo">二本柳亮<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#speaking">Speaking</a></li>
         </ul>
-        <a href="#cta" class="nav-cta">
-            <span class="material-icons">mail_outline</span>
-            無料相談
+        <a href="#contact" class="nav-cta">
+            <span class="material-icons" style="font-size:16px;">mail</span>
+            相談する
         </a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
-            <span></span><span></span><span></span>
-        </button>
     </nav>
 
-    <!-- ===== Hero ===== -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
         <div class="hero-bg">
             <div class="hero-blob hero-blob-1"></div>
             <div class="hero-blob hero-blob-2"></div>
-            <div class="hero-blob hero-blob-3"></div>
         </div>
-        <div class="section-inner">
-            <div class="hero-content">
-                <div class="hero-eyebrow fi">
-                    <span class="material-icons">auto_awesome</span>
-                    AI導入支援 & 社内ツール開発
-                </div>
-                <h1 class="fi delay-1">
-                    AIの波を、<br>あなたの<span class="accent">ビジネス</span>に。
-                </h1>
-                <p class="hero-sub fi delay-2">
-                    最新AIトレンドの把握から、ペインの発見、ツール導入、社内システム開発まで。<br>
-                    週次ミーティングで伴走し、あなたのビジネスのAI化を確実に進めます。
-                </p>
-                <div class="hero-actions fi delay-3">
-                    <a href="#cta" class="btn-primary">
-                        無料相談を予約する
-                        <span class="material-icons">arrow_forward</span>
+        <div class="hero-inner">
+            <div class="fi">
+                <span class="hero-eyebrow">AI顧問｜二本柳亮</span>
+                <h1>「AIで何ができる？」<br>その相談から、始めましょう。</h1>
+                <p class="hero-sub">ファンクラブサイトから契約書の自動化まで、生成AIで実務を形にしてきました。まずは課題を言葉にするところから、一緒に。</p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn-primary">
+                        <span class="material-icons" style="font-size:18px;">forum</span>
+                        まずは相談してみる
                     </a>
-                    <a href="#plans" class="btn-ghost">
-                        <span class="material-icons">visibility</span>
-                        サービスを見る
+                    <a href="#works" class="btn-secondary">
+                        <span class="material-icons" style="font-size:18px;">work_outline</span>
+                        実績を見る
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ===== Problem ===== -->
-    <section id="problem">
-        <div class="section-inner">
-            <div class="section-header center fi">
-                <p class="section-eyebrow">Problem</p>
-                <h2 class="section-title">こんな<span class="accent">課題</span>、ありませんか?</h2>
-                <p class="section-lead">AI時代の到来は感じているけれど、何から手をつけるべきか分からない。そんな声を多く聞きます。</p>
-            </div>
-            <div class="problem-grid">
-                <div class="glass-card problem-card fi delay-1">
-                    <div class="card-icon">
-                        <span class="material-icons">trending_up</span>
-                    </div>
-                    <h3>トレンドの変化が速すぎる</h3>
-                    <p>毎週のように新しいAIツールやサービスが登場し、どれが自社に最適なのか判断できない。情報収集だけで貴重な時間が消えていく。</p>
-                </div>
-                <div class="glass-card problem-card fi delay-2">
-                    <div class="card-icon">
-                        <span class="material-icons">psychology</span>
-                    </div>
-                    <h3>導入しても定着しない</h3>
-                    <p>ツールを試しに入れてみたものの、現場に浸透しない。本当のペインに刺さっていないため、結局元のやり方に戻ってしまう。</p>
-                </div>
-                <div class="glass-card problem-card fi delay-3">
-                    <div class="card-icon">
-                        <span class="material-icons">code</span>
-                    </div>
-                    <h3>社内ツールが作れない</h3>
-                    <p>市販ツールでは足りない業務特化の仕組みが必要。しかし開発リソースがなく、外注先の選定も難しい。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ===== Solutions (できること) ===== -->
-    <section id="solutions">
-        <div class="section-inner">
-            <div class="section-header center fi">
-                <p class="section-eyebrow">Solutions</p>
-                <h2 class="section-title">私に<span class="accent">できること</span></h2>
-                <p class="section-lead">最新AIの知見と実装力を掛け合わせ、御社のAI活用を確実に前進させます。</p>
-            </div>
-            <div class="solutions-grid">
-
-                <div class="glass-card solution-card fi delay-1">
-                    <div class="card-icon">
-                        <span class="material-icons">speed</span>
-                    </div>
-                    <h3>AIトレンド速報 & 戦略コンサル</h3>
-                    <p>毎週数十本のAIニュースを精査し、あなたのビジネスに影響のあるものだけを厳選。「何を使うべきか」を一緒に判断します。</p>
-                    <div class="solution-tags">
-                        <span class="solution-tag">GPT-5.4</span>
-                        <span class="solution-tag">Gemini</span>
-                        <span class="solution-tag">Claude</span>
-                        <span class="solution-tag">Manus</span>
-                    </div>
-                </div>
-
-                <div class="glass-card solution-card fi delay-2">
-                    <div class="card-icon">
-                        <span class="material-icons">smart_toy</span>
-                    </div>
-                    <h3>AIエージェント開発 & 自動化</h3>
-                    <p>Discord Bot、自動投稿システム、AIワークフローなど、業務を自動化するAIエージェントの設計・開発・運用を一気通貫で。</p>
-                    <div class="solution-tags">
-                        <span class="solution-tag">Claude Code</span>
-                        <span class="solution-tag">n8n</span>
-                        <span class="solution-tag">Dify</span>
-                        <span class="solution-tag">API連携</span>
-                    </div>
-                </div>
-
-                <div class="glass-card solution-card fi delay-3">
-                    <div class="card-icon">
-                        <span class="material-icons">desktop_mac</span>
-                    </div>
-                    <h3>社内AIツール & システム構築</h3>
-                    <p>GPT-5.4によるデスクトップ操作制御、社内FAQ Bot、AIレポート生成など、御社専用のAIシステムをゼロから構築します。</p>
-                    <div class="solution-tags">
-                        <span class="solution-tag">社内Bot</span>
-                        <span class="solution-tag">自動化</span>
-                        <span class="solution-tag">macOS制御</span>
-                        <span class="solution-tag">WebApp</span>
-                    </div>
-                </div>
-
-                <div class="glass-card solution-card fi delay-4">
-                    <div class="card-icon">
-                        <span class="material-icons">school</span>
-                    </div>
-                    <h3>AI研修 & ウェビナー登壇</h3>
-                    <p>「話しやすい・分かりやすい」と評価される講師スタイルで、社員のAIリテラシーを底上げ。即興ウェビナーにも対応します。</p>
-                    <div class="solution-tags">
-                        <span class="solution-tag">研修設計</span>
-                        <span class="solution-tag">ハンズオン</span>
-                        <span class="solution-tag">速報ウェビナー</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ===== Service Plans ===== -->
-    <section id="plans">
-        <div class="section-inner">
-            <div class="section-header center fi">
-                <p class="section-eyebrow">Service Plans</p>
-                <h2 class="section-title">2つの<span class="accent">支援プラン</span></h2>
-                <p class="section-lead">課題のフェーズに合わせて、最適なプランをお選びいただけます。</p>
-            </div>
-            <div class="plans-grid">
-
-                <!-- コンサルティングプラン -->
-                <div class="glass-card plan-card fi delay-1">
-                    <span class="plan-badge consulting">Consulting</span>
-                    <h3>AIコンサルティング</h3>
-                    <p class="plan-desc">週次ミーティングで最新AIトレンドを共有し、クライアントの本質的なペインを見極めた上で、最適なAIツールの選定・導入を伴走支援します。</p>
-                    <div class="plan-price">
-                        10万円<span>/ 月~</span>
-                    </div>
-                    <p class="plan-note">契約は月単位。まずはお気軽にご相談ください。</p>
-                    <ul class="plan-features">
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            週1回 60分のオンラインミーティング
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            最新AIトレンドレポートの共有
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            業務ペインの分析・可視化
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            AIツール選定・導入ロードマップ策定
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            チャットでの随時質問対応
-                        </li>
-                    </ul>
-                    <a href="#cta" class="btn-primary" style="width:100%; justify-content:center;">
-                        まずは無料相談
-                        <span class="material-icons">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- 開発プラン -->
-                <div class="glass-card plan-card featured fi delay-2">
-                    <span class="plan-badge development">Development</span>
-                    <h3>社内ツール開発</h3>
-                    <p class="plan-desc">専属の開発者をアサインし、業務に特化した社内AIツール・自動化システムを設計・開発・運用まで一気通貫でサポートします。</p>
-                    <div class="plan-price">
-                        30万円<span>/ 月~</span>
-                    </div>
-                    <p class="plan-note">契約は月単位。まずはお気軽にご相談ください。</p>
-                    <ul class="plan-features">
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            コンサルティングプランの全内容を含む
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            専属の開発エンジニアのアサイン
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            業務特化AIツールの設計・開発
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            既存システムとのAPI連携
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            運用・保守サポート
-                        </li>
-                        <li>
-                            <span class="material-icons">check_circle</span>
-                            社内向けAI活用研修の実施
-                        </li>
-                    </ul>
-                    <a href="#cta" class="btn-primary" style="width:100%; justify-content:center;">
-                        まずは無料相談
-                        <span class="material-icons">arrow_forward</span>
-                    </a>
-                </div>
-
+            <div class="hero-visual fi delay-1">
+                <img src="assets/profile-hero.jpg" alt="二本柳亮 プロフィール写真">
             </div>
         </div>
     </section>
@@ -1414,37 +363,34 @@
     <!-- ===== About ===== -->
     <section id="about">
         <div class="section-inner">
-            <div class="section-header fi">
-                <p class="section-eyebrow">About</p>
-                <h2 class="section-title">コンサルタント<span class="accent">紹介</span></h2>
-            </div>
+            <p class="section-eyebrow fi">About</p>
+            <h2 class="section-title fi">水先案内人として、<span class="accent">伴走する。</span></h2>
             <div class="about-grid">
-                <div class="about-photo fi delay-1">
-                    <div class="about-photo-frame">
-                        <img src="profile.jpg" alt="二本柳 亮" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
+                <div class="about-text fi delay-1">
+                    <p>二本柳亮（にほんやなぎ りょう）。AIコンサルタントとして、企業のDX・生成AI活用に伴走しています。SHIFT AIで講師も務めていて、「説明がわかりやすい」「話しやすい」と言ってもらえることが多いです。</p>
+                    <p>自分の役割は「水先案内人」だと思っています。答えを渡して終わりではなく、皆さんが自分たちで進めるようになるまで、地図を描きながら一緒に歩くこと。もともと音楽や動画制作の畑にいたので、技術の話を現場の言葉に翻訳するのが得意です。</p>
+                    <div class="about-quote">人や組織が変わっていく瞬間に立ち会えることが、この仕事のいちばんの喜びです。</div>
                 </div>
-                <div class="about-content fi delay-2">
-                    <h3>二本柳 亮</h3>
-                    <p class="about-role">AI時代の水先案内人 / SHIFT AI認定講師</p>
-                    <p class="about-text">
-                        AI技術の進化が加速する現代において、ビジネスパーソンがその潮流を捉え、実践的なスキルを身につけるための「水先案内人」。SHIFT
-                        AI認定講師として常に最新情報に触れ、数々の大型アップデート速報ウェビナーを担当。単なる情報提供に留まらず、AIコンサルタントとして企業の課題に深く寄り添い、Claude
-                        Code・Antigravityを用いたAI開発環境の構築、n8n・Difyによる自動化フロー設計、GPT-5.4によるmacOSデスクトップ操作制御の実証など、最先端の実装力を持つ。Manus・GenSpark等のAIエージェント活用から、Discord
-                        Botを用いた業務自動化システムの開発まで、最新トレンドと現場導入を一貫してリードする新時代のナビゲーター。
-                    </p>
-                    <div class="about-stats">
-                        <div class="about-stat">
-                            <div class="about-stat-num">15+</div>
-                            <div class="about-stat-label">登壇回数</div>
+                <div class="about-facts fi delay-2">
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">school</span>
+                        <div>
+                            <h3>SHIFT AI 講師</h3>
+                            <p>AIエージェントゼミの設計・速報ウェビナー運営など、教える側としての実践経験が豊富です。</p>
                         </div>
-                        <div class="about-stat">
-                            <div class="about-stat-num">40+</div>
-                            <div class="about-stat-label">対応 AIツール数</div>
+                    </div>
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">code</span>
+                        <div>
+                            <h3>Claude Code 全社導入支援</h3>
+                            <p>企業のAI活用推進を、ツール選定から現場の運用ルール作りまで一貫して支援します。</p>
                         </div>
-                        <div class="about-stat">
-                            <div class="about-stat-num">SHIFT AI</div>
-                            <div class="about-stat-label">認定講師</div>
+                    </div>
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">music_note</span>
+                        <div>
+                            <h3>作詞作曲・動画制作の背景</h3>
+                            <p>「伝える・場をつくる」を本職としてきた経験が土台。だから説明の順番や言葉選びに、変な迷いがありません。</p>
                         </div>
                     </div>
                 </div>
@@ -1452,328 +398,230 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
+    <div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,35 C180,70 360,5 540,35 C720,65 900,10 1080,35 C1200,52 1360,22 1440,32 L1440,70 L0,70 Z" fill="#16161d"/></svg></div>
 
-    <!-- ===== Speaking (登壇実績) ===== -->
+    <!-- ===== Skills ===== -->
+    <section id="skills" style="background: var(--bg-surface);">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Skills</p>
+            <h2 class="section-title fi">得意領域</h2>
+            <p class="section-lead fi">相談から実装、定着まで。生成AI活用を「使えるもの」に変えるための4つの軸です。</p>
+            <div class="grid-4">
+                <div class="glass-card skill-card fi delay-1">
+                    <span class="material-icons">forum</span>
+                    <h3>AI顧問・伴走支援</h3>
+                    <p>月次の壁打ちから実装まで。課題の言語化に付き合い、社内にAIが根づくまで並走します。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-2">
+                    <span class="material-icons">autorenew</span>
+                    <h3>業務の自動化</h3>
+                    <p>契約書業務、メール対応、業務フローの可視化。「毎回手でやっていること」をAIに任せる仕組みづくり。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-3">
+                    <span class="material-icons">dns</span>
+                    <h3>サイト・基盤構築</h3>
+                    <p>会員サイト構築、スプレッドシート連携CMS、データ分析基盤まで。作って終わりにしない設計。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-3">
+                    <span class="material-icons">groups</span>
+                    <h3>研修・社内浸透</h3>
+                    <p>SHIFT AI講師の経験を活かした、現場が「使える」と実感できる研修・勉強会の設計と実施。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Works ===== -->
+    <section id="works">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Works</p>
+            <h2 class="section-title fi">実績</h2>
+            <p class="section-lead fi">サイト構築から業務自動化まで、幅広い形でAI顧問として関わってきました。</p>
+            <div class="works-grid">
+                <div class="glass-card work-card fi delay-1">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">theater_comedy</span></div>
+                        <div>
+                            <h3>Newsical</h3>
+                            <p class="work-tag">ミュージカルカンパニー</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>AI顧問として伴走</li>
+                        <li><span class="material-icons">check_circle</span>公式ファンクラブサイト構築（会員証・掲示板・コメント機能まで実装）</li>
+                        <li><span class="material-icons">check_circle</span>チケット購入データの分析基盤構築</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-1">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">palette</span></div>
+                        <div>
+                            <h3>合同会社ニューサンス</h3>
+                            <p class="work-tag">アーティストコレクティブ</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>月次の壁打ちで経営課題に伴走</li>
+                        <li><span class="material-icons">check_circle</span>公式サイト構築</li>
+                        <li><span class="material-icons">check_circle</span>メール業務の自動化支援</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-2">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">spa</span></div>
+                        <div>
+                            <h3>Orion</h3>
+                            <p class="work-tag">コンディショニングサロン</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>公式サイト構築（スプレッドシート連携CMS）</li>
+                        <li><span class="material-icons">check_circle</span>現場スタッフだけでコンテンツ更新できる仕組み化</li>
+                        <li><span class="material-icons">check_circle</span>業務改善支援</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-2">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">lock</span></div>
+                        <div>
+                            <h3>守秘案件</h3>
+                            <p class="work-tag">社名非公開</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>脚本・記事ライティングのスキル化</li>
+                        <li><span class="material-icons">check_circle</span>契約書業務の自動化</li>
+                        <li><span class="material-icons">check_circle</span>業務フローの可視化</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave" style="transform: scaleY(-1);"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,35 C180,70 360,5 540,35 C720,65 900,10 1080,35 C1200,52 1360,22 1440,32 L1440,70 L0,70 Z" fill="#16161d"/></svg></div>
+
+    <!-- ===== Process ===== -->
+    <section id="process" style="background: var(--bg-surface);">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Process</p>
+            <h2 class="section-title fi">進め方</h2>
+            <p class="section-lead fi">いきなり大きく変えるのではなく、小さく試して確かめながら進めます。</p>
+            <div class="steps">
+                <div class="glass-card step fi delay-1">
+                    <div class="step-num">01</div>
+                    <h3>まず話を聞く</h3>
+                    <p>現状の困りごとを、AIの知識ゼロ前提で気軽に話してください。課題の言語化から一緒にやります。</p>
+                </div>
+                <div class="glass-card step fi delay-2">
+                    <div class="step-num">02</div>
+                    <h3>地図を描く</h3>
+                    <p>何をAI化すると効くか、優先順位と全体像を整理して、無理のないロードマップを提案します。</p>
+                </div>
+                <div class="glass-card step fi delay-3">
+                    <div class="step-num">03</div>
+                    <h3>小さく形にする</h3>
+                    <p>一番効果が見えやすいところから実装。動くものを早めに見て、方向を確かめながら進めます。</p>
+                </div>
+                <div class="glass-card step fi delay-3">
+                    <div class="step-num">04</div>
+                    <h3>自走まで伴走</h3>
+                    <p>使い方の定着、社内展開、運用ルールまで。社内だけで回せるようになったらゴールです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Speaking ===== -->
     <section id="speaking">
         <div class="section-inner">
-            <div class="section-header center fi">
-                <p class="section-eyebrow">Speaking</p>
-                <h2 class="section-title">登壇<span class="accent">実績</span></h2>
-                <p class="section-lead">ウェビナー・勉強会・イベントでの登壇を通じて、最新AIの知見を発信しています。</p>
-            </div>
+            <p class="section-eyebrow fi">Speaking</p>
+            <h2 class="section-title fi">登壇・講師実績</h2>
+            <p class="section-lead fi">速報ウェビナー・勉強会を中心に、最新のAIトレンドを現場の言葉で届けています。</p>
             <div class="speaking-grid">
-
-                <div class="glass-card speaking-card fi delay-1">
-                    <img src="登壇実績/20260223_AI時代_人間は考える側でいられるか.jpeg" alt="AI時代、人間は考える側でいられるか" class="speaking-card-img"
-                        loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.02.23</div>
-                        <div class="speaking-card-title">AI時代、人間は考える側でいられるか</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-2">
-                    <img src="登壇実績/20260222_ゆるっと作業会東京.jpeg" alt="ゆるっと作業会 東京" class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.02.22</div>
-                        <div class="speaking-card-title">ゆるっと作業会 東京</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-3">
-                    <img src="登壇実績/20260220_Gemini_Claude_Grok_最新AI三大アップデート.jpeg" alt="Gemini・Claude・Grok 最新AI三大アップデート"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.02.20</div>
-                        <div class="speaking-card-title">Gemini / Claude / Grok 最新AI三大アップデート</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi">
-                    <img src="登壇実績/20260206_ClaudeOpus4.6とCodex_速報ウェビナー.jpeg" alt="Claude Opus 4.6 & Codex 速報ウェビナー"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.02.06</div>
-                        <div class="speaking-card-title">Claude Opus 4.6 & Codex 速報ウェビナー</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-1">
-                    <img src="登壇実績/20260206_UI-TARS_LLMは目を持ったか.jpeg" alt="UI-TARS: LLMは目を持ったか" class="speaking-card-img"
-                        loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.02.06</div>
-                        <div class="speaking-card-title">UI-TARS: LLMは目を持ったか</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-2">
-                    <img src="登壇実績/20260121_ClaudeCowork_新しい可能性.jpeg" alt="Claude Cowork 新しい可能性"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2026.01.21</div>
-                        <div class="speaking-card-title">Claude Cowork 新しい可能性</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-3">
-                    <img src="登壇実績/20251213_GoogleWorkspaceStudio_正式リリース.jpeg" alt="Google Workspace Studio 正式リリース"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.12.13</div>
-                        <div class="speaking-card-title">Google Workspace Studio 正式リリース</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi">
-                    <img src="登壇実績/20251113_AIエージェント活用講座.jpeg" alt="AIエージェント活用講座" class="speaking-card-img"
-                        loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.11.13</div>
-                        <div class="speaking-card-title">AIエージェント活用講座</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-1">
-                    <img src="登壇実績/20251023_Manus1.5_徹底解説ウェビナー.jpeg" alt="Manus 1.5 徹底解説ウェビナー" class="speaking-card-img"
-                        loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.10.23</div>
-                        <div class="speaking-card-title">Manus 1.5 徹底解説ウェビナー</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-2">
-                    <img src="登壇実績/20251022_Atlas解禁_OpenAIブラウザ速報.jpeg" alt="Atlas解禁・OpenAIブラウザ速報"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.10.22</div>
-                        <div class="speaking-card-title">Atlas解禁 / OpenAIブラウザ速報</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-3">
-                    <img src="登壇実績/20251016_GoogleVeo3.1_アップデート完全解説.jpeg" alt="Google Veo 3.1 アップデート完全解説"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.10.16</div>
-                        <div class="speaking-card-title">Google Veo 3.1 アップデート完全解説</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi">
-                    <img src="登壇実績/20251009_GoogleOpal_AIエージェント研究回.jpeg" alt="Google Opal AIエージェント研究回"
-                        class="speaking-card-img" loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.10.09</div>
-                        <div class="speaking-card-title">Google Opal AIエージェント研究回</div>
-                    </div>
-                </div>
-
-                <div class="glass-card speaking-card fi delay-1">
-                    <img src="登壇実績/20250912_脱手入力_ハンズフリーAI仕事術.jpeg" alt="脱手入力 ハンズフリーAI仕事術" class="speaking-card-img"
-                        loading="lazy">
-                    <div class="speaking-card-body">
-                        <div class="speaking-card-date">2025.09.12</div>
-                        <div class="speaking-card-title">脱手入力 ハンズフリーAI仕事術</div>
-                    </div>
-                </div>
-
+                <figure class="glass-card speaking-card fi delay-1">
+                    <img src="assets/speaking-01.jpeg" alt="AIエージェント構築ウェビナー" loading="lazy">
+                    <figcaption>AIエージェント構築 — ゴールを渡すだけで動く世界</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-1">
+                    <img src="assets/speaking-02.jpeg" alt="AI時代 人間は考える側でいられるか" loading="lazy">
+                    <figcaption>AI時代、人間は考える側でいられるか</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-2">
+                    <img src="assets/speaking-03.jpeg" alt="Claude Opus 4.6とCodex 速報ウェビナー" loading="lazy">
+                    <figcaption>Claude Opus 4.6とCodex 速報ウェビナー</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-2">
+                    <img src="assets/speaking-04.jpeg" alt="Claude Cowork 新しい可能性" loading="lazy">
+                    <figcaption>Claude Cowork、新しい可能性</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-3">
+                    <img src="assets/speaking-05.jpeg" alt="Google Workspace Studio 正式リリース" loading="lazy">
+                    <figcaption>Google Workspace Studio 正式リリース</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-3">
+                    <img src="assets/speaking-06.jpeg" alt="AIエージェント活用講座" loading="lazy">
+                    <figcaption>AIエージェント活用講座</figcaption>
+                </figure>
+            </div>
+            <div class="speaking-more fi">
+                <a href="speaking.html" class="link-more">
+                    登壇実績をもっと見る
+                    <span class="material-icons">arrow_forward</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== CTA / コンタクトフォーム ===== -->
-    <section id="cta">
-        <div class="cta-bg-blob cta-bg-blob-1"></div>
-        <div class="cta-bg-blob cta-bg-blob-2"></div>
-        <div class="section-inner">
-            <div class="cta-inner fi">
-                <p class="section-eyebrow">Contact</p>
-                <h2>AIで、ビジネスの<span class="accent">次の一手</span>を。</h2>
-                <p>まずは無料相談で、あなたのビジネスの課題と可能性について<br>お話しさせてください。押し売りは一切しません。</p>
+    <!-- ===== Contact / CTA ===== -->
+    <section class="cta-section" id="contact">
+        <div class="section-inner cta-inner">
+            <p class="section-eyebrow fi">Contact</p>
+            <h2 class="section-title fi">まずは、話すところから。</h2>
+            <p class="section-lead fi" style="margin-left: auto; margin-right: auto;">DX・生成AI活用の進め方でお困りでしたら、お気軽にご相談ください。現状のヒアリングから始めます。</p>
+            <div class="hero-ctas fi delay-1" style="justify-content: center; margin-top: 32px;">
+                <a href="mailto:yanagi.amaryllis@gmail.com" class="btn-primary">
+                    <span class="material-icons" style="font-size:18px;">mail</span>
+                    メールで相談する
+                </a>
             </div>
-
-            <!-- フォーム -->
-            <form class="contact-form fi delay-1" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="name">お名前<span class="required">*</span></label>
-                        <input type="text" id="name" name="name" class="form-input" placeholder="山田 太郎" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="company">会社名</label>
-                        <input type="text" id="company" name="company" class="form-input" placeholder="株式会社○○">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="email">メールアドレス<span class="required">*</span></label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="090-1234-5678">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="plan">興味のあるプラン</label>
-                    <select id="plan" name="plan" class="form-select">
-                        <option value="" disabled selected>選択してください</option>
-                        <option value="consulting">AIコンサルティング（10万円/月~）</option>
-                        <option value="development">社内ツール開発（30万円/月~）</option>
-                        <option value="undecided">まだ決めていない / 相談したい</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="message">ご相談内容<span class="required">*</span></label>
-                    <textarea id="message" name="message" class="form-textarea"
-                        placeholder="現在の課題や、AIで実現したいことをお気軽にお書きください" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary form-submit">
-                    無料相談を申し込む
-                    <span class="material-icons">send</span>
-                </button>
-                <p class="cta-micro">
-                    <span class="material-icons">schedule</span>
-                    所要時間 約30分 / オンライン対応
-                </p>
-            </form>
-
-            <!-- サンクスメッセージ -->
-            <div class="thanks-msg" id="thanksMsg">
-                <span class="material-icons">check_circle</span>
-                <h3>お問い合わせありがとうございます</h3>
-                <p>2営業日以内にご返信いたします。<br>お急ぎの場合は、メールにて直接ご連絡ください。</p>
-            </div>
+            <p class="cta-note fi delay-2"><span class="material-icons">schedule</span>まずは30分程度のオンラインヒアリングからご案内しています</p>
         </div>
     </section>
 
-    <!-- ===== フッター ===== -->
     <footer>
-        <div class="footer-inner">
-            <p class="footer-copy">2026 pilotAI. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="#">プライバシーポリシー</a></li>
-                <li><a href="#">特定商取引法に基づく表記</a></li>
-            </ul>
-        </div>
+        <p>&copy; 2026 Ryo Nihonyanagi. All rights reserved.</p>
     </footer>
 
     <script>
-        // ナビゲーションのスクロール制御
-        const mainNav = document.getElementById('mainNav');
+        // Scroll progress bar
         const scrollBar = document.getElementById('scrollBar');
-
         window.addEventListener('scroll', () => {
-            // ナビ背景の切り替え
-            mainNav.classList.toggle('scrolled', window.scrollY > 40);
-            // スクロールプログレスバー
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             scrollBar.style.width = scrolled + '%';
         }, { passive: true });
 
-        // モバイルメニュー
-        const navHamburger = document.getElementById('navHamburger');
-        const navLinks = document.getElementById('navLinks');
-        navHamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-        // メニューリンクをクリックしたら閉じる
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('open'));
-        });
+        // Nav background on scroll
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            mainNav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
 
-        // スクロールアニメーション (Intersection Observer)
+        // Fade-in on scroll
         document.addEventListener('DOMContentLoaded', () => {
             const items = Array.from(document.querySelectorAll('.fi'));
             const show = el => el.classList.add('visible');
-
-            if (!('IntersectionObserver' in window)) {
-                items.forEach(show);
-                return;
-            }
-
+            if (!('IntersectionObserver' in window)) { items.forEach(show); return; }
             const io = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        show(entry.target);
-                        observer.unobserve(entry.target);
-                    }
+                    if (entry.isIntersecting) { show(entry.target); observer.unobserve(entry.target); }
                 });
             }, { threshold: 0.06 });
-
             items.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.92) {
-                    show(el);
-                } else {
-                    io.observe(el);
-                }
+                if (rect.top < window.innerHeight * 0.92) show(el);
+                else io.observe(el);
             });
         });
-
-        // コンタクトフォーム送信処理
-        const contactForm = document.getElementById('contactForm');
-        const thanksMsg = document.getElementById('thanksMsg');
-
-        // APIサーバーのURL（ローカル開発時: http://localhost:3001）
-        const API_URL = 'http://localhost:3001';
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const submitBtn = contactForm.querySelector('.form-submit');
-            const originalHTML = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="material-icons" style="animation: spin 1s linear infinite;">sync</span> 送信中...';
-            submitBtn.disabled = true;
-
-            try {
-                const formData = {
-                    name: document.getElementById('name').value,
-                    company: document.getElementById('company').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    plan: document.getElementById('plan').value,
-                    message: document.getElementById('message').value
-                };
-
-                const response = await fetch(`${API_URL}/api/contact`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    contactForm.style.display = 'none';
-                    thanksMsg.classList.add('show');
-                } else {
-                    throw new Error(result.error || '送信に失敗しました');
-                }
-            } catch (error) {
-                console.error('送信エラー:', error);
-                submitBtn.innerHTML = originalHTML;
-                submitBtn.disabled = false;
-                alert('送信に失敗しました。時間をおいて再度お試しください。');
-            }
-        });
     </script>
-
-    <style>
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 </body>
-
 </html>
