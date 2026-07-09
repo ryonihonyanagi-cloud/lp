@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二本柳亮 | AI顧問・生成AI活用の伴走者</title>
+    <meta name="description" content="二本柳亮（やなぎ）のAI顧問プロフィール。生成AI活用・DX推進の相談から、サイト構築・業務自動化の実装まで伴走します。SHIFT AI講師。">
+    <!-- OGP -->
+    <meta property="og:title" content="二本柳亮 | AI顧問・生成AI活用の伴走者">
+    <meta property="og:description" content="生成AI活用・DX推進の相談から実装まで。ファンクラブサイト構築から契約書業務の自動化まで、幅広く伴走してきました。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="その他アセット/二本柳_宣材写真.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0f0f12;
+            --bg-surface: #16161d;
+            --bg-card: rgba(255,255,255,0.04);
+            --glass-bg: rgba(255,255,255,0.07);
+            --glass-border: rgba(255,255,255,0.12);
+            --glass-border-hover: rgba(255,255,255,0.25);
+            --text: #f0f0f5;
+            --text-muted: #9b9bb0;
+            --text-dim: #6b6b80;
+            --accent: #f59e42;
+            --accent-glow: rgba(245,158,66,0.25);
+            --accent2: #e8734a;
+            --gradient-warm: linear-gradient(135deg, #f59e42, #e8734a);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --shadow-glass: 0 8px 32px rgba(0,0,0,0.3);
+            --font: 'Noto Sans JP', 'Inter', -apple-system, sans-serif;
+            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ===== Progress bar ===== */
+        .scroll-indicator {
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: var(--gradient-warm); z-index: 300;
+            width: 0%; transition: width 0.08s linear;
+        }
+
+        /* ===== Nav ===== */
+        #mainNav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 40px; transition: var(--transition);
+        }
+        #mainNav.scrolled {
+            background: rgba(15,15,18,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-logo { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            font-size: 0.88rem; color: var(--text-muted); transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.85rem; font-weight: 600; color: var(--bg);
+            background: var(--gradient-warm);
+            padding: 10px 22px; border-radius: 50px;
+        }
+        @media (max-width: 860px) {
+            .nav-links { display: none; }
+            #mainNav { padding: 14px 20px; }
+        }
+
+        /* ===== Section utils ===== */
+        .section-inner { max-width: 1100px; margin: 0 auto; padding: 100px 40px; }
+        @media (max-width: 768px) { .section-inner { padding: 64px 20px; } }
+
+        .section-eyebrow {
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700; line-height: 1.4; letter-spacing: -0.02em;
+            word-break: keep-all; overflow-wrap: anywhere;
+        }
+        .accent { color: var(--accent); }
+        .section-lead {
+            font-size: 1rem; color: var(--text-muted); margin-top: 18px; max-width: 640px;
+        }
+
+        /* ===== Glassmorphism card ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            backdrop-filter: blur(12px);
+            transition: var(--transition);
+        }
+        .glass-card:hover {
+            border-color: var(--glass-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        /* ===== Fade-in animation ===== */
+        .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fi.visible { opacity: 1; transform: translateY(0); }
+        .fi.delay-1 { transition-delay: 0.1s; }
+        .fi.delay-2 { transition-delay: 0.2s; }
+        .fi.delay-3 { transition-delay: 0.3s; }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; overflow: hidden;
+        }
+        .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+        .hero-blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.16; animation: float 8s ease-in-out infinite;
+        }
+        .hero-blob-1 {
+            width: 620px; height: 620px;
+            background: radial-gradient(circle, #f59e42, transparent 70%);
+            top: -12%; left: -16%;
+        }
+        .hero-blob-2 {
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, #e8734a, transparent 70%);
+            bottom: -10%; right: -10%;
+            animation-delay: 2s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-24px) scale(1.05); }
+        }
+        .hero-inner {
+            position: relative; z-index: 1;
+            max-width: 1100px; margin: 0 auto; padding: 140px 40px 80px;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 56px; align-items: center;
+        }
+        @media (max-width: 860px) {
+            .hero-inner { grid-template-columns: 1fr; padding: 120px 20px 60px; gap: 36px; }
+        }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+            color: var(--accent); text-transform: uppercase;
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            padding: 8px 18px; margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 4.6vw, 3.2rem);
+            font-weight: 700; line-height: 1.5; letter-spacing: -0.02em;
+            word-break: keep-all; overflow-wrap: anywhere;
+        }
+        .hero-sub {
+            margin-top: 24px; font-size: 1.05rem; color: var(--text-muted);
+            max-width: 560px;
+        }
+        .hero-ctas { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 32px; border-radius: 50px;
+            background: var(--gradient-warm); color: #17110a;
+            font-size: 0.95rem; font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 24px var(--accent-glow);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 28px; border-radius: 50px;
+            border: 1px solid var(--glass-border); color: var(--text);
+            font-size: 0.95rem; font-weight: 600; transition: var(--transition);
+        }
+        .btn-secondary:hover { border-color: var(--glass-border-hover); }
+        .hero-visual {
+            position: relative; border-radius: var(--radius-lg);
+            overflow: hidden; border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-glass);
+        }
+        .hero-visual img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+        .hero-visual::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(15,15,18,0.55) 100%);
+        }
+
+        /* ===== About ===== */
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+            margin-top: 48px;
+        }
+        @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+        .about-text p { color: var(--text-muted); margin-bottom: 20px; }
+        .about-quote {
+            border-left: 3px solid var(--accent);
+            padding: 20px 28px; background: var(--bg-card);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 1.05rem; color: var(--text);
+        }
+        .about-facts { display: flex; flex-direction: column; gap: 20px; }
+        .fact-card {
+            padding: 24px; display: flex; gap: 16px; align-items: flex-start;
+        }
+        .fact-card .material-icons { color: var(--accent); font-size: 26px; margin-top: 2px; }
+        .fact-card h3 { font-size: 1rem; margin-bottom: 6px; }
+        .fact-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ===== Skills ===== */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+        @media (max-width: 960px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .grid-4 { grid-template-columns: 1fr; } }
+        .skill-card { padding: 28px 24px; }
+        .skill-card .material-icons {
+            color: var(--accent); font-size: 30px;
+            width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+            background: var(--accent-glow); border-radius: 12px; margin-bottom: 18px;
+        }
+        .skill-card h3 { font-size: 1.02rem; margin-bottom: 10px; }
+        .skill-card p { font-size: 0.88rem; color: var(--text-muted); }
+
+        /* ===== Works ===== */
+        .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 860px) { .works-grid { grid-template-columns: 1fr; } }
+        .work-card { padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+        .work-head { display: flex; align-items: center; gap: 14px; }
+        .work-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--gradient-warm); display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .work-icon .material-icons { color: #17110a; font-size: 24px; }
+        .work-head h3 { font-size: 1.15rem; }
+        .work-head .work-tag { font-size: 0.78rem; color: var(--text-dim); }
+        .work-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .work-list li {
+            font-size: 0.92rem; color: var(--text-muted);
+            display: flex; gap: 10px; align-items: flex-start;
+        }
+        .work-list .material-icons { font-size: 16px; color: var(--accent); margin-top: 3px; }
+
+        /* ===== Process ===== */
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+        @media (max-width: 960px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+        .step { padding: 28px 22px; }
+        .step-num {
+            font-size: 0.85rem; font-weight: 700; color: var(--accent);
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .step h3 { font-size: 1rem; margin-bottom: 8px; }
+        .step p { font-size: 0.86rem; color: var(--text-muted); }
+
+        /* ===== Speaking ===== */
+        .speaking-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px;
+        }
+        @media (max-width: 860px) { .speaking-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .speaking-grid { grid-template-columns: 1fr; } }
+        .speaking-card { overflow: hidden; }
+        .speaking-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .speaking-card figcaption { padding: 16px 18px; font-size: 0.85rem; color: var(--text-muted); }
+        .speaking-more { text-align: center; margin-top: 40px; }
+        .link-more {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.92rem; color: var(--accent); border-bottom: 1px solid var(--accent-glow);
+            padding-bottom: 2px;
+        }
+        .link-more .material-icons { font-size: 18px; }
+
+        /* ===== Contact / CTA ===== */
+        .cta-section {
+            position: relative; overflow: hidden;
+            background: var(--bg-surface);
+        }
+        .cta-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+        .cta-inner .section-title { margin-bottom: 4px; }
+        .cta-note { margin-top: 20px; font-size: 0.85rem; color: var(--text-dim); }
+        .cta-note .material-icons { font-size: 15px; vertical-align: -2px; margin-right: 4px; color: var(--accent); }
+
+        /* ===== Wave ===== */
+        .wave { line-height: 0; }
+        .wave svg { display: block; width: 100%; height: 70px; }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 40px 40px; text-align: center;
+            color: var(--text-dim); font-size: 0.82rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        footer a { color: var(--text-muted); }
+        footer a:hover { color: var(--accent); }
+    </style>
+</head>
+
+<body>
+    <div class="scroll-indicator" id="scrollBar"></div>
+
+    <nav id="mainNav">
+        <a href="#hero" class="nav-logo">二本柳亮<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#speaking">Speaking</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">
+            <span class="material-icons" style="font-size:16px;">mail</span>
+            相談する
+        </a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="fi">
+                <span class="hero-eyebrow">AI顧問｜二本柳亮</span>
+                <h1>「AIで何ができる？」<br>その相談から、始めましょう。</h1>
+                <p class="hero-sub">ファンクラブサイトから契約書の自動化まで、生成AIで実務を形にしてきました。まずは課題を言葉にするところから、一緒に。</p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn-primary">
+                        <span class="material-icons" style="font-size:18px;">forum</span>
+                        まずは相談してみる
+                    </a>
+                    <a href="#works" class="btn-secondary">
+                        <span class="material-icons" style="font-size:18px;">work_outline</span>
+                        実績を見る
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual fi delay-1">
+                <img src="その他アセット/二本柳_宣材写真.jpg" alt="二本柳亮 プロフィール写真">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">About</p>
+            <h2 class="section-title fi">水先案内人として、<span class="accent">伴走する。</span></h2>
+            <div class="about-grid">
+                <div class="about-text fi delay-1">
+                    <p>二本柳亮（やなぎ）。AIコンサルタントとして、企業のDX・生成AI活用に伴走しています。SHIFT AIで講師も務めていて、「説明がわかりやすい」「話しやすい」と言ってもらえることが多いです。</p>
+                    <p>自分の役割は「水先案内人」だと思っています。答えを渡して終わりではなく、皆さんが自分たちで進めるようになるまで、地図を描きながら一緒に歩くこと。もともと音楽や動画制作の畑にいたので、技術の話を現場の言葉に翻訳するのが得意です。</p>
+                    <div class="about-quote">人や組織が変わっていく瞬間に立ち会えることが、この仕事のいちばんの喜びです。</div>
+                </div>
+                <div class="about-facts fi delay-2">
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">school</span>
+                        <div>
+                            <h3>SHIFT AI 講師</h3>
+                            <p>AIエージェントゼミの設計・速報ウェビナー運営など、教える側としての実践経験が豊富です。</p>
+                        </div>
+                    </div>
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">code</span>
+                        <div>
+                            <h3>Claude Code 全社導入支援</h3>
+                            <p>企業のAI活用推進を、ツール選定から現場の運用ルール作りまで一貫して支援します。</p>
+                        </div>
+                    </div>
+                    <div class="glass-card fact-card">
+                        <span class="material-icons">music_note</span>
+                        <div>
+                            <h3>作詞作曲・動画制作の背景</h3>
+                            <p>「伝える・場をつくる」を本職としてきた経験が土台。だから説明の順番や言葉選びに、変な迷いがありません。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,35 C180,70 360,5 540,35 C720,65 900,10 1080,35 C1200,52 1360,22 1440,32 L1440,70 L0,70 Z" fill="#16161d"/></svg></div>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills" style="background: var(--bg-surface);">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Skills</p>
+            <h2 class="section-title fi">得意領域</h2>
+            <p class="section-lead fi">相談から実装、定着まで。生成AI活用を「使えるもの」に変えるための4つの軸です。</p>
+            <div class="grid-4">
+                <div class="glass-card skill-card fi delay-1">
+                    <span class="material-icons">forum</span>
+                    <h3>AI顧問・伴走支援</h3>
+                    <p>月次の壁打ちから実装まで。課題の言語化に付き合い、社内にAIが根づくまで並走します。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-2">
+                    <span class="material-icons">autorenew</span>
+                    <h3>業務の自動化</h3>
+                    <p>契約書業務、メール対応、業務フローの可視化。「毎回手でやっていること」をAIに任せる仕組みづくり。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-3">
+                    <span class="material-icons">dns</span>
+                    <h3>サイト・基盤構築</h3>
+                    <p>会員サイト構築、スプレッドシート連携CMS、データ分析基盤まで。作って終わりにしない設計。</p>
+                </div>
+                <div class="glass-card skill-card fi delay-3">
+                    <span class="material-icons">groups</span>
+                    <h3>研修・社内浸透</h3>
+                    <p>SHIFT AI講師の経験を活かした、現場が「使える」と実感できる研修・勉強会の設計と実施。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Works ===== -->
+    <section id="works">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Works</p>
+            <h2 class="section-title fi">実績</h2>
+            <p class="section-lead fi">サイト構築から業務自動化まで、幅広い形でAI顧問として関わってきました。</p>
+            <div class="works-grid">
+                <div class="glass-card work-card fi delay-1">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">theater_comedy</span></div>
+                        <div>
+                            <h3>Newsical</h3>
+                            <p class="work-tag">ミュージカルカンパニー</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>AI顧問として伴走</li>
+                        <li><span class="material-icons">check_circle</span>公式ファンクラブサイト構築（会員証・掲示板・コメント機能まで実装）</li>
+                        <li><span class="material-icons">check_circle</span>チケット購入データの分析基盤構築</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-1">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">palette</span></div>
+                        <div>
+                            <h3>合同会社ニューサンス</h3>
+                            <p class="work-tag">アーティストコレクティブ</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>月次の壁打ちで経営課題に伴走</li>
+                        <li><span class="material-icons">check_circle</span>公式サイト構築</li>
+                        <li><span class="material-icons">check_circle</span>メール業務の自動化支援</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-2">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">spa</span></div>
+                        <div>
+                            <h3>Orion</h3>
+                            <p class="work-tag">コンディショニングサロン</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>公式サイト構築（スプレッドシート連携CMS）</li>
+                        <li><span class="material-icons">check_circle</span>現場スタッフだけでコンテンツ更新できる仕組み化</li>
+                        <li><span class="material-icons">check_circle</span>業務改善支援</li>
+                    </ul>
+                </div>
+                <div class="glass-card work-card fi delay-2">
+                    <div class="work-head">
+                        <div class="work-icon"><span class="material-icons">lock</span></div>
+                        <div>
+                            <h3>守秘案件</h3>
+                            <p class="work-tag">社名非公開</p>
+                        </div>
+                    </div>
+                    <ul class="work-list">
+                        <li><span class="material-icons">check_circle</span>脚本・記事ライティングのスキル化</li>
+                        <li><span class="material-icons">check_circle</span>契約書業務の自動化</li>
+                        <li><span class="material-icons">check_circle</span>業務フローの可視化</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave" style="transform: scaleY(-1);"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,35 C180,70 360,5 540,35 C720,65 900,10 1080,35 C1200,52 1360,22 1440,32 L1440,70 L0,70 Z" fill="#16161d"/></svg></div>
+
+    <!-- ===== Process ===== -->
+    <section id="process" style="background: var(--bg-surface);">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Process</p>
+            <h2 class="section-title fi">進め方</h2>
+            <p class="section-lead fi">いきなり大きく変えるのではなく、小さく試して確かめながら進めます。</p>
+            <div class="steps">
+                <div class="glass-card step fi delay-1">
+                    <div class="step-num">01</div>
+                    <h3>まず話を聞く</h3>
+                    <p>現状の困りごとを、AIの知識ゼロ前提で気軽に話してください。課題の言語化から一緒にやります。</p>
+                </div>
+                <div class="glass-card step fi delay-2">
+                    <div class="step-num">02</div>
+                    <h3>地図を描く</h3>
+                    <p>何をAI化すると効くか、優先順位と全体像を整理して、無理のないロードマップを提案します。</p>
+                </div>
+                <div class="glass-card step fi delay-3">
+                    <div class="step-num">03</div>
+                    <h3>小さく形にする</h3>
+                    <p>一番効果が見えやすいところから実装。動くものを早めに見て、方向を確かめながら進めます。</p>
+                </div>
+                <div class="glass-card step fi delay-3">
+                    <div class="step-num">04</div>
+                    <h3>自走まで伴走</h3>
+                    <p>使い方の定着、社内展開、運用ルールまで。社内だけで回せるようになったらゴールです。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Speaking ===== -->
+    <section id="speaking">
+        <div class="section-inner">
+            <p class="section-eyebrow fi">Speaking</p>
+            <h2 class="section-title fi">登壇・講師実績</h2>
+            <p class="section-lead fi">速報ウェビナー・勉強会を中心に、最新のAIトレンドを現場の言葉で届けています。</p>
+            <div class="speaking-grid">
+                <figure class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20260707_AIエージェント構築_1920x1080_weekday.jpeg" alt="AIエージェント構築ウェビナー" loading="lazy">
+                    <figcaption>AIエージェント構築 — ゴールを渡すだけで動く世界</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-1">
+                    <img src="登壇実績/20260223_AI時代_人間は考える側でいられるか.jpeg" alt="AI時代 人間は考える側でいられるか" loading="lazy">
+                    <figcaption>AI時代、人間は考える側でいられるか</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-2">
+                    <img src="登壇実績/20260206_ClaudeOpus4.6とCodex_速報ウェビナー.jpeg" alt="Claude Opus 4.6とCodex 速報ウェビナー" loading="lazy">
+                    <figcaption>Claude Opus 4.6とCodex 速報ウェビナー</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-2">
+                    <img src="登壇実績/20260121_ClaudeCowork_新しい可能性.jpeg" alt="Claude Cowork 新しい可能性" loading="lazy">
+                    <figcaption>Claude Cowork、新しい可能性</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-3">
+                    <img src="登壇実績/20251213_GoogleWorkspaceStudio_正式リリース.jpeg" alt="Google Workspace Studio 正式リリース" loading="lazy">
+                    <figcaption>Google Workspace Studio 正式リリース</figcaption>
+                </figure>
+                <figure class="glass-card speaking-card fi delay-3">
+                    <img src="登壇実績/20251113_AIエージェント活用講座.jpeg" alt="AIエージェント活用講座" loading="lazy">
+                    <figcaption>AIエージェント活用講座</figcaption>
+                </figure>
+            </div>
+            <div class="speaking-more fi">
+                <a href="speaking.html" class="link-more">
+                    登壇実績をもっと見る
+                    <span class="material-icons">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact / CTA ===== -->
+    <section class="cta-section" id="contact">
+        <div class="section-inner cta-inner">
+            <p class="section-eyebrow fi">Contact</p>
+            <h2 class="section-title fi">まずは、話すところから。</h2>
+            <p class="section-lead fi" style="margin-left: auto; margin-right: auto;">DX・生成AI活用の進め方でお困りでしたら、お気軽にご相談ください。現状のヒアリングから始めます。</p>
+            <div class="hero-ctas fi delay-1" style="justify-content: center; margin-top: 32px;">
+                <a href="mailto:yanagi.amaryllis@gmail.com" class="btn-primary">
+                    <span class="material-icons" style="font-size:18px;">mail</span>
+                    メールで相談する
+                </a>
+            </div>
+            <p class="cta-note fi delay-2"><span class="material-icons">schedule</span>まずは30分程度のオンラインヒアリングからご案内しています</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ryo Nihonyanagi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll progress bar
+        const scrollBar = document.getElementById('scrollBar');
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollBar.style.width = scrolled + '%';
+        }, { passive: true });
+
+        // Nav background on scroll
+        const mainNav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            mainNav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Fade-in on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = Array.from(document.querySelectorAll('.fi'));
+            const show = el => el.classList.add('visible');
+            if (!('IntersectionObserver' in window)) { items.forEach(show); return; }
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { show(entry.target); observer.unobserve(entry.target); }
+                });
+            }, { threshold: 0.06 });
+            items.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.92) show(el);
+                else io.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
